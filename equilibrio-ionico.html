@@ -1,0 +1,1971 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Equilíbrio Iônico — Ka, α, Ostwald, Kw e pH</title>
+<meta name="description" content="Aula completa e kit de revisão pré-prova sobre equilíbrio iônico: constante de ionização (Ka e Kb), grau de ionização, Lei de Ostwald, produto iônico da água e pH.">
+<meta name="color-scheme" content="light dark">
+<!-- Tipografia (Fraunces, Hanken Grotesk, JetBrains Mono) carregada do Google Fonts apenas como melhoria visual,
+     sem bloquear a abertura da página. Sem internet (ou sem JavaScript), a página usa as fontes do próprio sistema. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<script>
+  (function(){try{var t=localStorage.getItem('eqi-theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();
+</script>
+<style>
+/* ============ Tokens (tema claro: creme quente) ============ */
+:root{
+  --bg:#f6f1e7; --surface:#fffcf6; --surface-2:#efe7d6;
+  --ink:#211b15; --ink-2:#4a4136; --ink-3:#73675a;
+  --line:#e3d8c4; --line-2:#cfc1a7;
+  --accent:#0f5b62; --accent-2:#0b4a50; --accent-soft:#e2eeec; --on-accent:#ffffff;
+  --kit:#9a4b0f; --kit-2:#7c3b0a; --kit-soft:#f7e7d3; --kit-band:#fbf3e6; --on-kit:#ffffff;
+  --def-bg:#e7f1ef; --def-bd:#0f5b62;
+  --for-bg:#f1edf9; --for-bd:#5b3fa6;
+  --ex-bg:#ebf3e8;  --ex-bd:#2f6b3a;
+  --fix-bg:#fbeae7; --fix-bd:#b42318;
+  --int-bg:#fbf1da; --int-bd:#8a5900;
+  --com-bg:#e7eff8; --com-bd:#2b5c8a;
+  --trap-bg:#f8eaf1; --trap-bd:#9d2765;
+  --ves-bg:#eeebe4; --ves-bd:#3d3a35;
+  --c-hcl:#c2410c; --c-clo:#6d28d9; --c-ace:#0f766e; --c-grid:#d8ccb6;
+  --shadow:0 1px 2px rgba(70,45,10,.06),0 6px 20px rgba(70,45,10,.05);
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  --f-head:"Fraunces","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --f-math:"Fraunces","Cambria Math",Cambria,Georgia,"Times New Roman",serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+/* ============ Tema escuro (automático ou escolhido no botão) ============ */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14110d; --surface:#1c1813; --surface-2:#262019;
+    --ink:#efe6d8; --ink-2:#cdbfac; --ink-3:#a39582;
+    --line:#352d23; --line-2:#4b3f31;
+    --accent:#6cc3c9; --accent-2:#93d6db; --accent-soft:#16292a; --on-accent:#0c1c1d;
+    --kit:#f0a35a; --kit-2:#f6be86; --kit-soft:#2d2115; --kit-band:#1a150f; --on-kit:#1d1206;
+    --def-bg:#132625; --def-bd:#5fb8be;
+    --for-bg:#1e1a2b; --for-bd:#a691ee;
+    --ex-bg:#152218;  --ex-bd:#75c085;
+    --fix-bg:#2d1714; --fix-bd:#f0877b;
+    --int-bg:#2a2112; --int-bd:#e3b45c;
+    --com-bg:#132131; --com-bd:#82b4e6;
+    --trap-bg:#2a1520; --trap-bd:#e683b9;
+    --ves-bg:#22201c; --ves-bd:#bab3a6;
+    --c-hcl:#fb8a54; --c-clo:#b79cf7; --c-ace:#4fd1c0; --c-grid:#4a3f31;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14110d; --surface:#1c1813; --surface-2:#262019;
+  --ink:#efe6d8; --ink-2:#cdbfac; --ink-3:#a39582;
+  --line:#352d23; --line-2:#4b3f31;
+  --accent:#6cc3c9; --accent-2:#93d6db; --accent-soft:#16292a; --on-accent:#0c1c1d;
+  --kit:#f0a35a; --kit-2:#f6be86; --kit-soft:#2d2115; --kit-band:#1a150f; --on-kit:#1d1206;
+  --def-bg:#132625; --def-bd:#5fb8be;
+  --for-bg:#1e1a2b; --for-bd:#a691ee;
+  --ex-bg:#152218;  --ex-bd:#75c085;
+  --fix-bg:#2d1714; --fix-bd:#f0877b;
+  --int-bg:#2a2112; --int-bd:#e3b45c;
+  --com-bg:#132131; --com-bd:#82b4e6;
+  --trap-bg:#2a1520; --trap-bd:#e683b9;
+  --ves-bg:#22201c; --ves-bd:#bab3a6;
+  --c-hcl:#fb8a54; --c-clo:#b79cf7; --c-ace:#4fd1c0; --c-grid:#4a3f31;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+}
+
+/* ============ Base ============ */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.72 var(--f-body);text-rendering:optimizeLegibility}
+@media (max-width:600px){body{font-size:16px;line-height:1.68}}
+[id]{scroll-margin-top:78px}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{color:var(--accent-2)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+svg{max-width:100%}
+p{margin:.75em 0}
+ul,ol{padding-left:1.4em}
+li{margin:.3em 0}
+strong,b{font-weight:650}
+sub,sup{font-size:.72em;line-height:0}
+small{font-size:.85em}
+.muted{color:var(--ink-3)}
+.nowrap{white-space:nowrap}
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:var(--on-accent);padding:8px 12px;border-radius:6px;z-index:100}
+.skip:focus{left:8px}
+
+/* ============ Barra de progresso e barra superior ============ */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--kit));z-index:70}
+.topbar{position:sticky;top:0;z-index:60;background:var(--bg);background:color-mix(in srgb,var(--bg) 90%,transparent);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:1200px;margin:0 auto;padding:9px 16px;display:flex;align-items:center;gap:10px}
+.brand{font:700 15px/1.15 var(--f-head);color:var(--ink);text-decoration:none;white-space:nowrap}
+.brand small{display:block;font:500 11px/1.3 var(--f-body);color:var(--ink-3);letter-spacing:.02em}
+.top-links{display:flex;gap:6px;margin-left:auto;align-items:center}
+.top-links a{font:600 13px/1 var(--f-body);text-decoration:none;padding:8px 11px;border-radius:999px;color:var(--ink-2);border:1px solid var(--line-2);white-space:nowrap}
+.top-links a:hover{background:var(--surface-2)}
+.top-links a.go-aula.is-on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.top-links a.go-kit{color:var(--kit);border-color:var(--kit)}
+.top-links a.go-kit.is-on{background:var(--kit);color:var(--on-kit)}
+.theme-toggle{font:600 13px/1 var(--f-body);background:transparent;color:var(--ink-2);border:1px solid var(--line-2);border-radius:999px;padding:8px 11px;cursor:pointer;white-space:nowrap}
+.theme-toggle:hover{background:var(--surface-2)}
+@media (max-width:760px){.brand small{display:none}.top-links a.go-sum{display:none}}
+@media (max-width:440px){.brand{font-size:13.5px}.top-links{gap:4px}.top-links a,.theme-toggle{padding:7px 8px;font-size:12.5px}}
+
+/* ============ Layout ============ */
+.shell{max-width:1200px;margin:0 auto;padding:0 16px;display:grid;grid-template-columns:minmax(0,1fr)}
+main{min-width:0;padding-bottom:96px}
+.sidenav{display:none}
+@media (min-width:1180px){
+  .shell{grid-template-columns:240px minmax(0,780px);column-gap:56px;justify-content:center}
+  .sidenav{display:block;position:sticky;top:62px;align-self:start;max-height:calc(100vh - 76px);overflow:auto;padding:26px 4px 28px 0;font-size:13.5px;line-height:1.4;scrollbar-width:thin;z-index:2}
+}
+.sidenav .side-h{font:700 11px/1.2 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:18px 0 6px}
+.sidenav .side-h:first-child{margin-top:0}
+.sidenav ul{list-style:none;margin:0;padding:0}
+.sidenav li{margin:0}
+.sidenav a{display:block;padding:5px 10px;border-left:2px solid var(--line);color:var(--ink-2);text-decoration:none}
+.sidenav a.sub{padding-left:22px;font-size:12.5px;color:var(--ink-3)}
+.sidenav a:hover{color:var(--ink);background:var(--surface-2)}
+.sidenav a.active{border-left-color:var(--accent);color:var(--accent);font-weight:600;background:var(--accent-soft)}
+.sidenav .kit-links a.active{border-left-color:var(--kit);color:var(--kit);background:var(--kit-soft)}
+
+/* ============ Abertura ============ */
+.hero{padding:42px 0 10px}
+.eyebrow{font:600 12.5px/1.45 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font:700 clamp(2rem,1.25rem + 3vw,3.05rem)/1.08 var(--f-head);letter-spacing:-.015em;margin:0 0 14px}
+.lede{font-size:1.12rem;color:var(--ink-2);max-width:62ch}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 6px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px/1 var(--f-body);padding:12px 16px;border-radius:10px;text-decoration:none;background:var(--accent);color:var(--on-accent);border:1px solid var(--accent)}
+.btn:hover{background:var(--accent-2);border-color:var(--accent-2);color:var(--on-accent)}
+.btn.kit{background:transparent;color:var(--kit);border-color:var(--kit)}
+.btn.kit:hover{background:var(--kit-soft);color:var(--kit-2)}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin:18px 0 0;padding:0;list-style:none;font-size:13.5px;color:var(--ink-3)}
+.meta li{margin:0}
+.meta strong{color:var(--ink-2)}
+
+/* ============ Sumário ============ */
+.toc{margin:30px 0 0;padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+.toc h2{font:700 1.25rem/1.2 var(--f-head);margin:0 0 12px}
+.toc-grid{display:grid;grid-template-columns:1fr;gap:6px 36px}
+@media (min-width:720px){.toc-grid{grid-template-columns:1.25fr 1fr}}
+.toc-col p{font:700 11.5px/1.2 var(--f-body);letter-spacing:.09em;text-transform:uppercase;margin:6px 0 6px}
+.toc-col.a p{color:var(--accent)}
+.toc-col.k p{color:var(--kit)}
+.toc ol{margin:0;padding-left:1.3em;font-size:.95rem}
+.toc ol ol{list-style:none;padding-left:.2em;font-size:.88rem;margin:2px 0 4px}
+.toc li{margin:.18em 0}
+.toc .k-list a{color:var(--kit)}
+
+/* ============ Áreas e títulos ============ */
+.area{margin-top:3.4rem}
+.area-head{border-radius:16px;padding:22px 22px 18px;margin:0 0 6px;border:1px solid var(--line)}
+.area-head.aula{background:var(--accent-soft)}
+.area-head.kit{background:var(--kit-soft)}
+.area-tag{font:600 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px}
+.area-head.aula .area-tag{color:var(--accent)}
+.area-head.kit .area-tag{color:var(--kit)}
+h2.area-title{font:700 clamp(1.7rem,1.2rem + 1.8vw,2.3rem)/1.15 var(--f-head);margin:0}
+.area-head p:last-child{margin:.5em 0 0;color:var(--ink-2)}
+h3.sec{font:650 clamp(1.45rem,1.15rem + 1vw,1.85rem)/1.2 var(--f-head);margin:3.2rem 0 .6rem;padding-top:1.3rem;border-top:1px solid var(--line)}
+h4.topic{font:650 1.34rem/1.25 var(--f-head);margin:2.6rem 0 .5rem}
+h4.mini,h5.mini{font:700 1rem/1.35 var(--f-body);margin:1.6rem 0 .3rem;color:var(--ink-2)}
+.n{font:600 .62em/1 var(--f-mono);color:var(--accent);vertical-align:.25em;margin-right:.3em;letter-spacing:.04em}
+#kit .n{color:var(--kit)}
+
+/* ============ Caixas didáticas ============ */
+.k-def{--bd:var(--def-bd);--bgc:var(--def-bg)}
+.k-for{--bd:var(--for-bd);--bgc:var(--for-bg)}
+.k-ex{--bd:var(--ex-bd);--bgc:var(--ex-bg)}
+.k-fix{--bd:var(--fix-bd);--bgc:var(--fix-bg)}
+.k-int{--bd:var(--int-bd);--bgc:var(--int-bg)}
+.k-com{--bd:var(--com-bd);--bgc:var(--com-bg)}
+.k-trap{--bd:var(--trap-bd);--bgc:var(--trap-bg)}
+.k-ves{--bd:var(--ves-bd);--bgc:var(--ves-bg)}
+.box{background:var(--bgc,var(--surface));border:1px solid var(--line);border-left:4px solid var(--bd,var(--line-2));border-radius:10px;padding:14px 18px;margin:1.2rem 0}
+.box > :first-child{margin-top:0}
+.box > :last-child{margin-bottom:0}
+.box-t{display:block;font:700 11.5px/1.25 var(--f-body);letter-spacing:.09em;text-transform:uppercase;color:var(--bd,var(--ink-3));margin:0 0 6px}
+.chip{display:inline-block;font:700 11px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:6px;border-left:3px solid var(--bd);background:var(--bgc);color:var(--bd);white-space:nowrap}
+.legend-list{list-style:none;padding:0;margin:.8rem 0;display:grid;gap:10px}
+.legend-list li{display:grid;grid-template-columns:minmax(0,190px) 1fr;gap:12px;align-items:start;margin:0}
+@media (max-width:560px){.legend-list li{grid-template-columns:1fr;gap:4px}}
+
+/* "Como está no caderno" */
+.nb{background:var(--surface);border:1px dashed var(--line-2);border-radius:10px;padding:12px 16px;margin:1.1rem 0;font-size:.98rem}
+.nb-t{display:block;font:600 11.5px/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.nb p{margin:.35em 0}
+
+/* ============ Matemática e química ============ */
+.math{font-family:var(--f-math)}
+.var{font-style:italic}
+.fdisp{font-family:var(--f-math);font-size:1.22rem;text-align:center;margin:.5rem 0 .7rem;overflow-x:auto;overflow-y:hidden;padding:6px 2px;white-space:nowrap}
+.fdisp.big{font-size:1.42rem}
+.frac{display:inline-flex;flex-direction:column;align-items:stretch;vertical-align:middle;text-align:center;margin:0 .12em;line-height:1.3}
+.frac > span{padding:0 .3em}
+.frac > span:first-child{border-bottom:1.4px solid currentColor;padding-bottom:.06em}
+.frac > span:last-child{padding-top:.06em}
+.eq{font-family:var(--f-math);font-size:1.12rem;text-align:center;overflow-x:auto;overflow-y:hidden;white-space:nowrap;padding:8px 4px;margin:.6rem 0}
+.arr{display:inline-flex;flex-direction:column;align-items:center;line-height:1;vertical-align:middle;margin:0 .35em}
+.arr small{font:600 .6em/1.1 var(--f-body);color:var(--ink-3)}
+.fdisp .pt,.eq .pt{display:inline-block}
+.fdisp .ar,.eq .ar{color:var(--ink-3);margin:0 .45em}
+.fdisp .sep,.eq .sep{font:500 .8em var(--f-body);color:var(--ink-3);margin:0 .6em}
+.fdisp .gap,.eq .gap{display:inline-block;width:1.6em}
+.fdisp .pt > .ar:first-child,.eq .pt > .ar:first-child{margin-left:.15em}
+@media (max-width:600px){
+  .fdisp,.eq{white-space:normal;font-size:1.04rem;line-height:1.95}
+  .fdisp.big{font-size:1.14rem}
+}
+ul.legend{list-style:none;padding:0;margin:.4rem 0 0;font-size:.96rem}
+ul.legend li{margin:.25em 0}
+.cond{font-size:.95rem;margin:.5rem 0 0}
+
+/* ============ Tabelas ============ */
+.tw{overflow-x:auto;margin:1.1rem 0;border:1px solid var(--line);border-radius:10px;background:var(--surface);-webkit-overflow-scrolling:touch}
+.tw table{border-collapse:collapse;width:100%;font-size:.95rem}
+.tw th,.tw td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.tw tbody tr:last-child > *{border-bottom:0}
+.tw thead th{background:var(--surface-2);font-weight:650;font-size:.88rem;color:var(--ink-2)}
+.tw caption{caption-side:top;text-align:left;padding:10px 12px 2px;font-weight:650;color:var(--ink-2);font-size:.9rem}
+table.wide{min-width:640px}
+table.mid{min-width:520px}
+table.ice{min-width:440px}
+table.ice th,table.ice td{text-align:center;font-family:var(--f-math);white-space:nowrap}
+table.ice tbody th{font-family:var(--f-body);font-weight:700;color:var(--accent);text-align:left;white-space:nowrap}
+table.ice tr.r-e > *{background:color-mix(in srgb,var(--accent) 8%,transparent);font-weight:600}
+.scroll-hint{display:none;font-size:12px;color:var(--ink-3);margin:-.6rem 0 1rem}
+.tw.can-scroll + .scroll-hint{display:block}
+@media (max-width:600px){
+  .tw th,.tw td{padding:8px 8px}
+  .box{padding:12px 13px}
+  ol.steps > li{padding-left:2.2rem}
+  ol.steps .tw{margin-left:-2.2rem}
+  table.mid,table.ice{min-width:0}
+  table.ice th,table.ice td{padding:7px 5px;font-size:.86rem;white-space:normal}
+  table.ice caption{font-size:.84rem}
+}
+
+/* ============ Passo a passo ============ */
+ol.steps{list-style:none;counter-reset:st;padding:0;margin:1rem 0}
+ol.steps > li{counter-increment:st;position:relative;padding-left:2.5rem;margin:.9rem 0}
+ol.steps > li::before{content:counter(st);position:absolute;left:0;top:.15rem;width:1.75rem;height:1.75rem;border-radius:50%;background:var(--accent);color:var(--on-accent);font:600 .82rem/1.75rem var(--f-mono);text-align:center}
+#kit ol.steps > li::before{background:var(--kit);color:var(--on-kit)}
+
+/* ============ Figuras ============ */
+figure{margin:1.6rem 0}
+.fig{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px}
+.fig-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.fig-scroll svg{display:block;width:100%;height:auto;min-width:600px}
+figcaption{font-size:.92rem;color:var(--ink-2);margin-top:.7rem}
+figcaption ol,figcaption ul{margin:.4rem 0 0}
+svg text{font-family:var(--f-body)}
+svg .t{fill:var(--ink)}
+svg .t2{fill:var(--ink-2)}
+svg .t3{fill:var(--ink-3)}
+svg .ln{stroke:var(--ink-3);fill:none}
+svg .ax{stroke:var(--ink-2);fill:none}
+svg .grid{stroke:var(--c-grid);fill:none}
+svg .node{fill:var(--surface);stroke:var(--line-2)}
+svg .node-a{fill:var(--accent-soft);stroke:var(--accent)}
+svg .node-k{fill:var(--kit-soft);stroke:var(--kit)}
+svg .acc{fill:var(--accent)}
+svg .accs{stroke:var(--accent);fill:none}
+svg .hcl{stroke:var(--c-hcl);fill:none}
+svg .clo{stroke:var(--c-clo);fill:none}
+svg .ace{stroke:var(--c-ace);fill:none}
+svg .hclf{fill:var(--c-hcl)}
+svg .clof{fill:var(--c-clo)}
+svg .acef{fill:var(--c-ace)}
+svg .mk{fill:var(--surface);stroke:var(--ink)}
+
+/* Cadeia e fluxograma */
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:1.1rem 0;font-size:.95rem}
+.chain .nd{background:var(--surface);border:1px solid var(--line-2);border-radius:999px;padding:6px 12px}
+.chain .nd.a{border-color:var(--accent);color:var(--accent);font-weight:600}
+.chain .ar{color:var(--ink-3)}
+.flow{display:grid;gap:10px;margin:1rem 0}
+.flow-start{background:var(--ink);color:var(--bg);border-radius:12px;padding:12px 16px;font-weight:650;text-align:center}
+.flow-down{text-align:center;color:var(--ink-3);font-size:1.2rem;line-height:1}
+.flow-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.flow-card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--bd,var(--accent));border-radius:12px;padding:12px 14px}
+.flow-card .if{font:700 11.5px/1.3 var(--f-body);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin:0}
+.flow-card .then{font-weight:650;margin:.3rem 0 .2rem}
+.flow-card ol{margin:.2rem 0 0;padding-left:1.15em;font-size:.93rem}
+
+/* ============ Pegadinhas ============ */
+ol.pit{padding-left:0;list-style:none;counter-reset:pt;margin:1rem 0}
+ol.pit > li{counter-increment:pt;border-bottom:1px solid var(--line);padding:12px 0 12px 2.7rem;position:relative;margin:0}
+ol.pit > li::before{content:counter(pt,decimal-leading-zero);position:absolute;left:0;top:12px;font:700 14px/1.65 var(--f-mono);color:var(--trap-bd)}
+ol.pit .why,ol.pit .how{display:block;font-size:.95rem;color:var(--ink-2);margin-top:.2rem}
+ol.pit .why b{color:var(--trap-bd)}
+ol.pit .how b{color:var(--ex-bd)}
+
+/* ============ Vídeos ============ */
+.vid{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:1rem 0}
+.vid-topic{font:700 11.5px/1.2 var(--f-body);letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin:2rem 0 .4rem}
+.vid-t{font:650 1.08rem/1.35 var(--f-head);margin:0 0 4px}
+.vid-meta{font:500 13px/1.45 var(--f-body);color:var(--ink-3);margin:0 0 8px}
+.vid p{margin:.45em 0;font-size:.97rem}
+a.watch{display:inline-flex;gap:8px;align-items:center;margin-top:8px;font:600 14px/1 var(--f-body);padding:11px 14px;border-radius:9px;background:var(--accent);color:var(--on-accent);text-decoration:none}
+a.watch:hover{background:var(--accent-2);color:var(--on-accent)}
+
+/* ============ Respostas escondidas ============ */
+details.rev{margin:.7rem 0 0;border:1px dashed var(--line-2);border-radius:9px;background:var(--surface)}
+details.rev > summary{cursor:pointer;list-style:none;padding:10px 14px;font:600 14px/1.3 var(--f-body);color:var(--accent);display:flex;align-items:center;gap:8px}
+details.rev > summary::-webkit-details-marker{display:none}
+details.rev > summary::before{content:"▸";display:inline-block;transition:transform .15s}
+details.rev[open] > summary::before{transform:rotate(90deg)}
+details.rev[open] > summary{border-bottom:1px dashed var(--line-2)}
+.rev-body{padding:10px 16px 12px}
+.rev-body > :first-child{margin-top:0}
+.rev-body > :last-child{margin-bottom:0}
+
+/* ============ Kit de revisão ============ */
+#kit{margin-top:4.5rem;background:var(--kit-band);border:1px solid var(--line);border-radius:20px;padding:10px 22px 36px}
+@media (max-width:600px){#kit{padding:8px 14px 28px;border-radius:14px}}
+#kit .area-head{margin-top:14px}
+#kit h3.sec{border-top-color:color-mix(in srgb,var(--kit) 30%,var(--line))}
+#kit a{color:var(--kit)}
+#kit a:hover{color:var(--kit-2)}
+#kit details.rev > summary{color:var(--kit)}
+#kit a.watch,#kit .btn{color:var(--on-kit)}
+.routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:1rem 0}
+.route{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--kit);border-radius:12px;padding:14px 16px}
+.route-t{font:700 1.08rem/1.2 var(--f-head);margin:0}
+.route .time{font:600 12px/1 var(--f-mono);color:var(--kit);letter-spacing:.06em;margin:.35rem 0 0}
+.route ol{padding-left:1.15em;margin:.6rem 0 0;font-size:.94rem}
+.prio{display:grid;gap:10px;margin:1rem 0}
+.prio-item{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.prio-item p{margin:0}
+.prio-item ul{margin:.3rem 0 0;padding-left:1.1em;font-size:.95rem}
+.pill{font:700 12px/1 var(--f-mono);padding:7px 9px;border-radius:7px;white-space:nowrap;border:1.5px solid var(--kit)}
+.pill.p1{background:var(--kit);color:var(--on-kit)}
+.pill.p2{background:transparent;color:var(--kit)}
+.pill.p3{background:var(--surface-2);color:var(--ink-2);border-color:var(--line-2)}
+.signal{list-style:none;padding:0;margin:1rem 0;display:grid;gap:8px}
+.signal li{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:0;font-size:.95rem}
+.signal .s{color:var(--ink-2);font-style:italic}
+.signal .to{color:var(--kit);font-weight:700}
+@media (max-width:600px){.signal li{grid-template-columns:1fr}.signal .to{display:none}.signal .tool::before{content:"→ ";color:var(--kit);font-weight:700}}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin:1rem 0}
+details.card{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+details.card > summary{cursor:pointer;list-style:none;padding:14px 16px;font-weight:600}
+details.card > summary::-webkit-details-marker{display:none}
+details.card > summary::after{content:"toque para ver a resposta";display:block;font:600 11px/1 var(--f-mono);color:var(--kit);margin-top:9px;letter-spacing:.03em}
+details.card[open] > summary::after{content:"resposta"}
+details.card .card-a{padding:0 16px 14px;color:var(--ink-2)}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:1rem 0}
+.q-h{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:4px}
+.q-n{font:700 13px/1 var(--f-mono);color:var(--kit)}
+.q-tag{font:600 11px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line-2);border-radius:999px;padding:4px 8px}
+.q p{margin:.4em 0}
+.workspace{border:1px dashed var(--line-2);border-radius:8px;min-height:62px;margin:.6rem 0;padding:6px 10px;color:var(--ink-3);font-size:.84rem}
+
+/* ============ Diversos ============ */
+.recap{display:grid;gap:10px;margin:1rem 0}
+.recap > div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.recap h4,.recap h5{font:700 1rem/1.3 var(--f-head);margin:0 0 4px;color:var(--accent)}
+#kit .recap h4{color:var(--kit)}
+.recap p,.recap ul{margin:.3rem 0;font-size:.97rem}
+.refs li{margin:.5em 0}
+.to-top{position:fixed;right:16px;bottom:16px;z-index:55;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line-2);color:var(--ink);text-decoration:none;box-shadow:var(--shadow);font:600 18px/1 var(--f-body)}
+.to-top:hover{background:var(--surface-2);color:var(--ink)}
+footer.end{margin:3rem 0 0;padding-top:1.2rem;border-top:1px solid var(--line);font-size:.88rem;color:var(--ink-3)}
+
+/* ============ Impressão / PDF ============ */
+@media print{
+  html:root:not(.print-x){
+    --bg:#ffffff; --surface:#ffffff; --surface-2:#f2f2f2; --ink:#111111; --ink-2:#333333; --ink-3:#555555;
+    --line:#cccccc; --line-2:#aaaaaa; --accent:#0b4a50; --accent-2:#0b4a50; --accent-soft:#eef5f4; --on-accent:#ffffff;
+    --kit:#7c3b0a; --kit-2:#7c3b0a; --kit-soft:#faf1e6; --kit-band:#ffffff; --on-kit:#ffffff;
+    --def-bg:#ffffff; --for-bg:#ffffff; --ex-bg:#ffffff; --fix-bg:#ffffff; --int-bg:#ffffff; --com-bg:#ffffff; --trap-bg:#ffffff; --ves-bg:#ffffff;
+    --def-bd:#0f5b62; --for-bd:#5b3fa6; --ex-bd:#2f6b3a; --fix-bd:#b42318; --int-bd:#8a5900; --com-bd:#2b5c8a; --trap-bd:#9d2765; --ves-bd:#3d3a35;
+    --c-hcl:#c2410c; --c-clo:#6d28d9; --c-ace:#0f766e; --c-grid:#cccccc; --shadow:none;
+  }
+  body{font-size:11pt;line-height:1.5;background:#fff;color:#111}
+  .topbar,.progress,.sidenav,.to-top,.theme-toggle,.hero-actions,.skip{display:none !important}
+  .shell{display:block;max-width:none;padding:0}
+  main{padding:0}
+  a{color:#0b4a50}
+  .vid a[href^="http"]::after,.refs a[href^="http"]::after{content:" (" attr(href) ")";font-size:8.5pt;color:#555;word-break:break-all}
+  a.watch{background:none !important;color:#0b4a50 !important;padding:0 !important;margin-top:4px;display:inline}
+  .scroll-hint{display:none !important}
+  .box,.q,figure,.vid,.route,.prio-item,details.card,.flow-card,.recap > div,.nb{break-inside:avoid}
+  h2,h3,h4,h5{break-after:avoid}
+  .tw{overflow:visible}
+  table.wide,table.mid,table.ice{min-width:0}
+  .fig-scroll{overflow:visible}
+  .fig-scroll svg{min-width:0}
+  #kit{break-before:page;border:0;padding:0;background:none}
+  .workspace{min-height:90px}
+  .toc{box-shadow:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#topo">Equilíbrio Iônico<small>K<sub>a</sub> · α · Ostwald · K<sub>w</sub> · pH</small></a>
+    <nav class="top-links" aria-label="Atalhos">
+      <a class="go-sum" href="#sumario">Sumário</a>
+      <a class="go-aula" href="#aula">Aula</a>
+      <a class="go-kit" href="#kit">Kit de revisão</a>
+      <button class="theme-toggle" id="themeToggle" type="button" hidden>Tema</button>
+    </nav>
+  </div>
+</header>
+
+<div class="shell">
+<nav class="sidenav" aria-label="Navegação da página">
+  <p class="side-h">Área 1 · Aula completa</p>
+  <ul>
+    <li><a href="#visao-geral">1. Visão geral</a></li>
+    <li><a href="#pre-requisitos">2. Pré-requisitos</a></li>
+    <li><a href="#explicacao">3. Explicação completa</a></li>
+    <li><a class="sub" href="#t1-ionizacao">3.1 Ionização e K<sub>i</sub></a></li>
+    <li><a class="sub" href="#t2-alfa">3.2 Grau de ionização (α)</a></li>
+    <li><a class="sub" href="#t3-ka-kb">3.3 K<sub>a</sub> e K<sub>b</sub></a></li>
+    <li><a class="sub" href="#t4-aluminio">3.4 Alumínio + ácidos</a></li>
+    <li><a class="sub" href="#t5-tabela">3.5 Tabela I–R/F–E</a></li>
+    <li><a class="sub" href="#t6-ostwald">3.6 Lei de Ostwald</a></li>
+    <li><a class="sub" href="#t7-pka">3.7 pK<sub>a</sub></a></li>
+    <li><a class="sub" href="#t8-kw">3.8 Produto iônico da água</a></li>
+    <li><a class="sub" href="#t9-ph">3.9 pH</a></li>
+    <li><a class="sub" href="#t10-ph-fraco">3.10 pH de ácido fraco</a></li>
+    <li><a href="#exemplos">4. Exemplos e analogias</a></li>
+    <li><a href="#esquemas">5. Esquemas</a></li>
+    <li><a href="#pegadinhas">6. Erros e pegadinhas</a></li>
+    <li><a href="#vestibular">7. Para os vestibulares</a></li>
+    <li><a href="#videos">8. Vídeos verificados</a></li>
+    <li><a href="#revisao-final">9. Revisão final</a></li>
+    <li><a href="#fontes">Fontes consultadas</a></li>
+  </ul>
+  <p class="side-h">Área 2 · Kit de revisão</p>
+  <ul class="kit-links">
+    <li><a href="#k-estrategia">K1. Estratégia</a></li>
+    <li><a href="#k-rotas">K2. Rotas por tempo</a></li>
+    <li><a href="#k-prioridades">K3. Prioridades</a></li>
+    <li><a href="#k-formulas">K4. Cartão de fórmulas</a></li>
+    <li><a href="#k-reconhecer">K5. Reconhecer a questão</a></li>
+    <li><a href="#k-roteiro">K6. Roteiro de resolução</a></li>
+    <li><a href="#k-comparacoes">K7. Comparações</a></li>
+    <li><a href="#k-erros">K8. Erros proibidos</a></li>
+    <li><a href="#k-exemplos">K9. Exemplos essenciais</a></li>
+    <li><a href="#k-flashcards">K10. Flashcards</a></li>
+    <li><a href="#k-teste">K11. Teste de recuperação</a></li>
+    <li><a href="#k-diagnostico">K12. Diagnóstico</a></li>
+  </ul>
+</nav>
+
+<main id="conteudo">
+
+<header class="hero" id="topo">
+  <p class="eyebrow">Química · Físico-Química · 2º ano EM e vestibulares (FUVEST, Unicamp, Unesp, ENEM)</p>
+  <h1>Equilíbrio Iônico: constante de ionização, grau de ionização, Lei de Ostwald, produto iônico da água e pH</h1>
+  <p class="lede">Aula completa construída a partir das quatro páginas do seu caderno (a seção “Eq. Iônicos” e as páginas com o cabeçalho “P.F.Q.”), seguida de um kit de revisão pré-prova que funciona sozinho.</p>
+  <div class="hero-actions">
+    <a class="btn" href="#aula">Começar a aula completa</a>
+    <a class="btn kit" href="#kit">Ir direto ao kit de revisão</a>
+  </div>
+  <ul class="meta">
+    <li><strong>Base:</strong> 4 fotos do caderno enviadas em 27/10/2026</li>
+    <li><strong>Aula:</strong> cerca de 1h30 a 2h com os exercícios</li>
+    <li><strong>Kit:</strong> rotas de 15, 30 e 60 min</li>
+  </ul>
+</header>
+
+<nav class="toc" id="sumario" aria-labelledby="sumario-t">
+  <h2 id="sumario-t">Sumário</h2>
+  <div class="toc-grid">
+    <div class="toc-col a">
+      <p>Área 1 — Aula completa</p>
+      <ol>
+        <li><a href="#visao-geral">Visão geral do tema</a></li>
+        <li><a href="#pre-requisitos">Pré-requisitos necessários</a></li>
+        <li><a href="#explicacao">Explicação completa por tópicos</a>
+          <ol>
+            <li><a href="#t1-ionizacao">3.1 Ionização de um ácido e K<sub>i</sub></a></li>
+            <li><a href="#t2-alfa">3.2 Grau de ionização (α): forte × fraco</a></li>
+            <li><a href="#t3-ka-kb">3.3 K<sub>a</sub> e K<sub>b</sub>: medindo a força</a></li>
+            <li><a href="#t4-aluminio">3.4 Alumínio + três ácidos: velocidade × quantidade</a></li>
+            <li><a href="#t5-tabela">3.5 A tabela Início / Reage–Forma / Equilíbrio</a></li>
+            <li><a href="#t6-ostwald">3.6 Lei da Diluição de Ostwald</a></li>
+            <li><a href="#t7-pka">3.7 pK<sub>a</sub></a></li>
+            <li><a href="#t8-kw">3.8 Produto iônico da água (K<sub>w</sub>)</a></li>
+            <li><a href="#t9-ph">3.9 pH: definição, cálculo e escala</a></li>
+            <li><a href="#t10-ph-fraco">3.10 pH de um ácido fraco: dois caminhos</a></li>
+          </ol>
+        </li>
+        <li><a href="#exemplos">Exemplos e analogias</a></li>
+        <li><a href="#esquemas">Esquemas e representações visuais</a></li>
+        <li><a href="#pegadinhas">Erros frequentes e pegadinhas</a></li>
+        <li><a href="#vestibular">O que mais importa para os vestibulares</a></li>
+        <li><a href="#videos">Vídeos completos verificados</a></li>
+        <li><a href="#revisao-final">Revisão final dos conceitos</a></li>
+      </ol>
+    </div>
+    <div class="toc-col k">
+      <p>Área 2 — Kit de revisão pré-prova</p>
+      <ol class="k-list">
+        <li><a href="#k-estrategia">Estratégia deste kit</a></li>
+        <li><a href="#k-rotas">Rotas: 15, 30 ou 60 minutos</a></li>
+        <li><a href="#k-prioridades">Prioridades</a></li>
+        <li><a href="#k-formulas">Cartão de fórmulas (com condições)</a></li>
+        <li><a href="#k-reconhecer">Como reconhecer o que a questão pede</a></li>
+        <li><a href="#k-roteiro">Roteiro de resolução</a></li>
+        <li><a href="#k-comparacoes">Comparações que evitam confusão</a></li>
+        <li><a href="#k-erros">Erros que não podem acontecer</a></li>
+        <li><a href="#k-exemplos">Exemplos essenciais</a></li>
+        <li><a href="#k-flashcards">Flashcards</a></li>
+        <li><a href="#k-teste">Teste de recuperação (com gabarito escondido)</a></li>
+        <li><a href="#k-diagnostico">Diagnóstico: o que revisar</a></li>
+      </ol>
+    </div>
+  </div>
+</nav>
+
+<!-- =============================================================
+     ÁREA 1 — AULA COMPLETA
+     ============================================================= -->
+<section class="area" id="aula" aria-labelledby="aula-title">
+  <div class="area-head aula">
+    <p class="area-tag">Área 1</p>
+    <h2 class="area-title" id="aula-title">Aula completa</h2>
+    <p>Do zero ao nível de vestibular, seguindo a ordem lógica do conteúdo do seu caderno. Os trechos que não estão nas fotos aparecem marcados.</p>
+  </div>
+
+  <!-- ========== 1. VISÃO GERAL ========== -->
+  <h3 class="sec" id="visao-geral"><span class="n">1</span> Visão geral do tema</h3>
+
+  <p>Quando um ácido é dissolvido em água, ele forma íons: o HCl, por exemplo, origina H<sup>+</sup> (na verdade, H<sub>3</sub>O<sup>+</sup>) e Cl<sup>−</sup>. A pergunta central desta aula é: <strong>quanto do ácido se transforma em íons — e o que isso faz com a acidez da solução?</strong></p>
+  <p>Em ácidos como o clorídrico, praticamente todas as moléculas se ionizam. Em ácidos como o acético (o do vinagre), só uma pequena fração se ioniza; o restante continua como molécula inteira. Nesse caso, moléculas e íons ficam em <strong>equilíbrio</strong>: a todo instante algumas moléculas se ionizam e alguns íons voltam a formar moléculas, na mesma velocidade. Esse equilíbrio entre moléculas e íons em solução é o <strong>equilíbrio iônico</strong>.</p>
+  <p>O conteúdo do caderno responde, em sequência, a quatro perguntas:</p>
+  <ol>
+    <li><strong>Quanto ionizou?</strong> → grau de ionização, <span class="math">α</span>.</li>
+    <li><strong>Qual é a tendência do ácido a se ionizar, independentemente de quanto foi dissolvido?</strong> → constante de ionização, K<sub>a</sub> (para bases, K<sub>b</sub>), e sua versão logarítmica, pK<sub>a</sub>.</li>
+    <li><strong>Como α e K<sub>a</sub> se relacionam?</strong> → tabela de equilíbrio (Início / Reage–Forma / Equilíbrio) e Lei da Diluição de Ostwald.</li>
+    <li><strong>Quão ácida fica a solução?</strong> → produto iônico da água (K<sub>w</sub>) e pH.</li>
+  </ol>
+  <div class="chain" role="img" aria-label="Sequência: ácido em água, ionização parcial, alfa e Ka, concentração de H+, pH; Kw liga H+ e OH-">
+    <span class="nd">ácido em água</span><span class="ar">→</span>
+    <span class="nd">ioniza (total ou parcialmente)</span><span class="ar">→</span>
+    <span class="nd a">α e K<sub>a</sub></span><span class="ar">→</span>
+    <span class="nd a">[H<sup>+</sup>]</span><span class="ar">→</span>
+    <span class="nd a">pH</span>
+    <span class="ar">·</span><span class="nd">K<sub>w</sub> liga [H<sup>+</sup>] e [OH<sup>−</sup>]</span>
+  </div>
+  <p>Esse conteúdo é a base de hidrólise salina, soluções-tampão e titulação, e aparece em vestibulares tanto em contas (K<sub>a</sub>, pH) quanto em interpretação — por exemplo, a diferença entre a <em>força</em> de um ácido (quanto ele ioniza) e a <em>quantidade</em> de ácido presente. Uma questão real da FUVEST sobre isso é comentada no <a href="#t4-aluminio">tópico 3.4</a>.</p>
+
+  <h4 class="mini">De onde veio cada parte desta aula</h4>
+  <div class="tw">
+    <table class="wide">
+      <thead><tr><th scope="col">Página do caderno</th><th scope="col">O que ela traz</th><th scope="col">Onde está aqui</th></tr></thead>
+      <tbody>
+        <tr><td>“P.F.Q.” — <em>Eq. Iônicos</em></td><td>Ionização do HCl e K<sub>i</sub>; grau de ionização (forte × fraco); K<sub>a</sub> e K<sub>b</sub>; reações do alumínio com três ácidos</td><td><a href="#t1-ionizacao">3.1</a> a <a href="#t4-aluminio">3.4</a></td></tr>
+        <tr><td>“Determine o K<sub>a</sub>…” + <em>Exemplo 1</em></td><td>Tabela do ácido HX (α = 3,7%); fórmula K<sub>i</sub> = α²·<span class="var">m</span>; Exemplo 1 com HF (α = 25%)</td><td><a href="#t5-tabela">3.5</a> e <a href="#t6-ostwald">3.6</a></td></tr>
+        <tr><td>“P.F.Q.” — exercícios 2 e 3, K<sub>w</sub>, ácido acético</td><td>Ostwald com (1 − α); produto iônico da água; K<sub>a</sub> e pK<sub>a</sub> do ácido acético; início de pH</td><td><a href="#t6-ostwald">3.6</a> a <a href="#t9-ph">3.9</a></td></tr>
+        <tr><td>Tabela do ácido acético e pH</td><td>K<sub>a</sub> → <span class="var">x</span> → pH = 3; exemplo com log 2; escala de pH; caminho α → [H<sup>+</sup>] → pH</td><td><a href="#t9-ph">3.9</a> e <a href="#t10-ph-fraco">3.10</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>As fotos mostram só o caderno: os enunciados completos do <em>Exemplo 1</em> e dos exercícios 2 e 3 não aparecem. Quando foi preciso reconstruir um dado a partir da resolução, isso está marcado com “Atenção à interpretação”.</p>
+
+  <h4 class="mini">Como ler as marcações</h4>
+  <ul class="legend-list">
+    <li><span class="chip k-fix">Correção necessária</span><span>Erro identificável no caderno, já corrigido aqui, com a explicação do porquê.</span></li>
+    <li><span class="chip k-int">Atenção à interpretação</span><span>Trecho pouco legível ou que admite mais de uma leitura: diz qual leitura foi adotada e por quê.</span></li>
+    <li><span class="chip k-com">Complemento</span><span>Informação que não está nas fotos, acrescentada para você entender melhor (com fonte, quando é um dado externo).</span></li>
+    <li><span class="chip k-trap">Pegadinha</span><span>Armadilha comum em prova.</span></li>
+    <li><span class="chip k-ves">No vestibular</span><span>Como o ponto costuma ser exigido; sem estatísticas inventadas.</span></li>
+  </ul>
+
+  <div class="box k-fix" role="note">
+    <span class="box-t">Correções encontradas no seu caderno (resumo)</span>
+    <ol>
+      <li>Exemplo de pH com [H<sup>+</sup>] = 2 × 10<sup>−3</sup>: o resultado é <strong>pH = 2,7</strong>, não −2,7 → <a href="#t9-ph">3.9</a>.</li>
+      <li>Reações do alumínio: a conclusão (HCl reage mais rápido) está certa, mas K<sub>a</sub> grande significa <strong>H<sub>2</sub> liberado mais depressa</strong>, não mais H<sub>2</sub> no total; as equações também precisam de balanceamento → <a href="#t4-aluminio">3.4</a>.</li>
+      <li>“Quanto mais forte o K<sub>a</sub> ou K<sub>b</sub>, mais forte é o ácido” → <strong>quanto maior o K<sub>a</sub>, mais forte o ácido; quanto maior o K<sub>b</sub>, mais forte a base</strong> → <a href="#t3-ka-kb">3.3</a>.</li>
+      <li>Exemplo 1 (HF): a conta parou antes do resultado; <strong>K<sub>a</sub> ≈ 8,3 × 10<sup>−4</sup></strong> → <a href="#t6-ostwald">3.6</a>.</li>
+      <li>O ânion do ácido acético é <strong>CH<sub>3</sub>COO<sup>−</sup></strong> (em uma das páginas ficou “H<sub>3</sub>COO<sup>−</sup>”, sem o C) → <a href="#t10-ph-fraco">3.10</a>.</li>
+      <li>Dois expoentes pouco legíveis na foto (resposta “1,4 · 10<sup>4</sup>” e o “(3,7 · 10<sup>?</sup>)²” do exercício 3): pelas contas, são 10<sup>−4</sup> e 10<sup>−2</sup> → <a href="#t5-tabela">3.5</a> e <a href="#t6-ostwald">3.6</a>.</li>
+    </ol>
+  </div>
+
+  <!-- ========== 2. PRÉ-REQUISITOS ========== -->
+  <h3 class="sec" id="pre-requisitos"><span class="n">2</span> Pré-requisitos necessários</h3>
+  <p>Cinco ferramentas que a aula usa o tempo todo. Se você já domina alguma, pule para a próxima.</p>
+
+  <h4 class="topic" id="p1-concentracao"><span class="n">2.1</span> Concentração em mol/L e o símbolo [ ]</h4>
+  <p>Colchetes significam <strong>concentração em mol/L</strong> (quantidade de matéria por litro de solução). [H<sup>+</sup>] = 10<sup>−3</sup> mol/L quer dizer que cada litro contém 0,001 mol de íons H<sup>+</sup>. A abreviação “0,1 M”, usada no caderno, é o mesmo que 0,1 mol/L.</p>
+  <div class="box k-def" role="note">
+    <span class="box-t">Notação do caderno</span>
+    <p>Na fórmula destacada K<sub>i</sub> = α²·<span class="var">m</span>, a letra <span class="var">m</span> é a <strong>concentração inicial do ácido em mol/L</strong> (molaridade) — <em>não</em> é massa. Esta aula mantém o <span class="var">m</span> do caderno; em outros livros a mesma grandeza aparece como M, 𝔐 ou C.</p>
+  </div>
+
+  <h4 class="topic" id="p2-acidos"><span class="n">2.2</span> Ácidos, bases, ionização e o íon H<sub>3</sub>O<sup>+</sup></h4>
+  <ul>
+    <li><strong>Ácido (Arrhenius):</strong> substância que, em água, produz H<sup>+</sup> como único cátion. <strong>Base:</strong> produz OH<sup>−</sup> como único ânion.</li>
+    <li><strong>Ionização:</strong> formação de íons que <em>não existiam</em> antes. O HCl é molecular; os íons H<sup>+</sup> e Cl<sup>−</sup> nascem na reação com a água. Ácidos sofrem ionização.</li>
+    <li><span class="chip k-com">Complemento</span> <strong>Dissociação:</strong> separação de íons que <em>já existiam</em>, como em bases iônicas (NaOH → Na<sup>+</sup> + OH<sup>−</sup>).</li>
+    <li><strong>H<sup>+</sup> ou H<sub>3</sub>O<sup>+</sup>?</strong> O H<sup>+</sup> é só um próton; em água ele se liga a uma molécula de H<sub>2</sub>O e forma o <strong>hidrônio</strong>, H<sub>3</sub>O<sup>+</sup>. Escrever H<sup>+</sup> é uma abreviação aceita — por isso o caderno escreve as duas formas, e as duas expressões de K<sub>i</sub> valem o mesmo.</li>
+  </ul>
+
+  <h4 class="topic" id="p3-equilibrio"><span class="n">2.3</span> Equilíbrio químico e constante de equilíbrio</h4>
+  <p>Uma reação <strong>reversível</strong> (seta dupla ⇌) acontece nos dois sentidos. Ela atinge o <strong>equilíbrio</strong> quando as velocidades direta e inversa se igualam: as concentrações param de mudar (o que não quer dizer que fiquem iguais entre si). O equilíbrio é <em>dinâmico</em>: as duas reações continuam ocorrendo.</p>
+  <div class="box k-for" role="note">
+    <span class="box-t">Expressão da constante de equilíbrio</span>
+    <div class="eq"><span class="var">a</span>A + <span class="var">b</span>B ⇌ <span class="var">c</span>C + <span class="var">d</span>D</div>
+    <div class="fdisp">K = <span class="frac"><span>[C]<sup><span class="var">c</span></sup> · [D]<sup><span class="var">d</span></sup></span><span>[A]<sup><span class="var">a</span></sup> · [B]<sup><span class="var">b</span></sup></span></span></div>
+    <ul class="legend">
+      <li>Produtos em cima, reagentes embaixo; cada coeficiente vira expoente.</li>
+      <li><strong>Não entram:</strong> sólidos e líquidos puros — inclusive a água quando é o solvente, porque sua concentração é praticamente constante.</li>
+      <li>K só muda com a <strong>temperatura</strong>. K grande indica equilíbrio favorável aos produtos.</li>
+    </ul>
+  </div>
+  <p><strong>Princípio de Le Chatelier</strong> (usado no tópico 3.4): quando o equilíbrio é perturbado, ele se desloca no sentido que compensa a perturbação. Se um produto é consumido, a reação direta avança para repô-lo.</p>
+
+  <h4 class="topic" id="p4-potencias"><span class="n">2.4</span> Potências de 10: as contas desta aula</h4>
+  <div class="tw">
+    <table class="mid">
+      <thead><tr><th scope="col">Regra</th><th scope="col">Exemplo tirado do caderno</th></tr></thead>
+      <tbody>
+        <tr><td>Multiplicar: <strong>soma</strong> os expoentes</td><td class="math">10<sup>−4</sup> · 10<sup>−1</sup> = 10<sup>−5</sup></td></tr>
+        <tr><td>Dividir: <strong>subtrai</strong> os expoentes</td><td class="math">10<sup>−6</sup> ÷ 10<sup>−1</sup> = 10<sup>−6 − (−1)</sup> = 10<sup>−5</sup></td></tr>
+        <tr><td>Elevar ao quadrado: eleva o número <strong>e</strong> dobra o expoente</td><td class="math">(3,7 × 10<sup>−3</sup>)² = 13,69 × 10<sup>−6</sup></td></tr>
+        <tr><td>Raiz quadrada: metade do expoente</td><td class="math">√(10<sup>−6</sup>) = 10<sup>−3</sup></td></tr>
+        <tr><td>Ajustar a notação: vírgula uma casa para a esquerda → expoente sobe 1</td><td class="math">13,69 × 10<sup>−5</sup> = 1,369 × 10<sup>−4</sup></td></tr>
+        <tr><td>Porcentagem → decimal (divide por 100)</td><td class="math">3,7% = 0,037 = 3,7 × 10<sup>−2</sup> · 1% = 10<sup>−2</sup> · 25% = 0,25</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4 class="topic" id="p5-log"><span class="n">2.5</span> Logaritmo decimal (log)</h4>
+  <p><strong>log <span class="var">x</span></strong> é o expoente ao qual 10 precisa ser elevado para dar <span class="var">x</span>. Assim, log 1000 = 3 (porque 10³ = 1000), log 10<sup>−3</sup> = −3 e log 1 = 0.</p>
+  <ul>
+    <li><strong>Propriedades:</strong> log(<span class="var">a</span>·<span class="var">b</span>) = log <span class="var">a</span> + log <span class="var">b</span> · log <span class="var">a</span><sup><span class="var">n</span></sup> = <span class="var">n</span>·log <span class="var">a</span> · log 10 = 1. É exatamente o que o caderno faz: log 10<sup>−5</sup> = −5·log 10 = −5.</li>
+    <li><strong>Valores úteis</strong> (a prova costuma fornecer): log 2 ≈ 0,30 · log 3 ≈ 0,48 · log 5 ≈ 0,70.</li>
+    <li><strong>Intuição:</strong> número entre 1 e 10 tem log entre 0 e 1; número menor que 1 tem log <em>negativo</em>. É por isso que a definição de pH tem um sinal de menos — para o resultado sair positivo.</li>
+  </ul>
+
+  <!-- ========== 3. EXPLICAÇÃO COMPLETA ========== -->
+  <h3 class="sec" id="explicacao"><span class="n">3</span> Explicação completa por tópicos</h3>
+  <p>Os dez tópicos seguem a lógica do assunto: primeiro, o que acontece com o ácido na água; depois, como medir isso (α e K<sub>a</sub>) e como uma grandeza leva à outra; por fim, a ionização da própria água e o pH.</p>
+
+  <!-- 3.1 -->
+  <h4 class="topic" id="t1-ionizacao"><span class="n">3.1</span> Ionização de um ácido e a constante de ionização (K<sub>i</sub>)</h4>
+  <p><strong>Intuição.</strong> O cloreto de hidrogênio, HCl, é um gás formado por moléculas. Borbulhado em água, cada molécula entrega seu H<sup>+</sup> a uma molécula de água e surgem dois íons que não existiam antes: o hidrônio e o cloreto. É a reação que abre a página “Eq. Iônicos” do caderno:</p>
+  <div class="eq">1 HCl(g) + 1 H<sub>2</sub>O(l) <span class="arr"><small>ioniza</small>⟶</span> 1 H<sub>3</sub>O<sup>+</sup>(aq) + 1 Cl<sup>−</sup>(aq)</div>
+  <p>A seta simples com a palavra “ioniza” faz sentido: o HCl é um ácido <strong>forte</strong> e praticamente todas as suas moléculas se ionizam.</p>
+  <div class="box k-for" role="note">
+    <span class="box-t">Constante de ionização — como está no caderno</span>
+    <div class="fdisp">K<sub>i</sub> = <span class="frac"><span>[H<sub>3</sub>O<sup>+</sup>]<sup>1</sup> · [Cl<sup>−</sup>]<sup>1</sup></span><span>[HCl]<sup>1</sup></span></span></div>
+    <div class="fdisp">forma simplificada: &nbsp;K<sub>i</sub> = <span class="frac"><span>[H<sup>+</sup>] · [Cl<sup>−</sup>]</span><span>[HCl]</span></span></div>
+    <ul class="legend">
+      <li><strong>K<sub>i</sub></strong> é a constante de equilíbrio aplicada à ionização (“Const. de Ionização”, como você anotou).</li>
+      <li>Os expoentes 1 vêm dos coeficientes 1 da equação.</li>
+      <li>A água não aparece: é o solvente líquido (regra do tópico <a href="#p3-equilibrio">2.3</a>).</li>
+    </ul>
+  </div>
+  <p><strong>Como ler a expressão.</strong> O numerador reúne os íons formados — o que ionizou. O denominador é o ácido que continuou como molécula — o que sobrou. Quanto mais o ácido se ioniza, maior o numerador e menor o denominador: K<sub>i</sub> aumenta. Como K<sub>i</sub> só muda com a temperatura, ele funciona como uma “carteira de identidade” do ácido naquela temperatura.</p>
+  <div class="box k-com" role="note">
+    <span class="box-t">Complemento para melhor compreensão</span>
+    <p><strong>Por que a água fica de fora.</strong> Um litro de água tem cerca de 1000 g; dividindo pela massa molar (18 g/mol), são ≈ 55,6 mol. Essa concentração (≈ 55,5 mol/L) quase não muda, porque a parte que reage é minúscula. Uma grandeza constante dentro da expressão é simplesmente incorporada ao próprio K.</p>
+    <p><strong>K<sub>i</sub> de ácido forte é enorme.</strong> No HCl em solução diluída, sobra tão pouco HCl molecular que K<sub>i</sub> fica gigantesco; na prática, considera-se o ácido ≈ 100% ionizado e não se calcula K<sub>a</sub>. A expressão é mais útil para ácidos <strong>fracos</strong>, nos quais existe equilíbrio de verdade (⇌).</p>
+  </div>
+  <p>Daqui em diante, um ácido genérico com <strong>um</strong> hidrogênio ionizável será chamado de HX, como no caderno:</p>
+  <div class="eq"><span class="pt">HX(aq) ⇌ H<sup>+</sup>(aq) + X<sup>−</sup>(aq)</span> <span class="gap"></span> <span class="pt">K<sub>a</sub> = <span class="frac"><span>[H<sup>+</sup>] · [X<sup>−</sup>]</span><span>[HX]</span></span></span></div>
+
+  <!-- 3.2 -->
+  <h4 class="topic" id="t2-alfa"><span class="n">3.2</span> Grau de ionização (α): ácido forte × ácido fraco</h4>
+  <p>K<sub>i</sub> descreve a <em>tendência</em> do ácido. O grau de ionização descreve o <em>resultado</em> numa solução específica: que fração das moléculas dissolvidas está ionizada.</p>
+  <div class="box k-def" role="note">
+    <span class="box-t">Definição</span>
+    <div class="fdisp">α = <span class="frac"><span>quantidade de moléculas ionizadas</span><span>quantidade de moléculas dissolvidas</span></span></div>
+    <ul class="legend">
+      <li>Pode ser contada em mol ou, como tudo está no mesmo volume, em mol/L.</li>
+      <li>Escreve-se como fração (0,01) ou porcentagem (1%). <strong>Nas fórmulas, use sempre a fração.</strong></li>
+      <li>α = 1% significa que, de cada 100 moléculas dissolvidas, em média 1 está ionizada a cada instante.</li>
+    </ul>
+  </div>
+  <p>Para um ácido HX de concentração inicial <span class="var">m</span>, o que ionizou vira H<sup>+</sup> e X<sup>−</sup> na proporção <span class="nowrap">1 : 1 : 1</span>. Então:</p>
+  <div class="fdisp"><span class="pt">[H<sup>+</sup>] = [X<sup>−</sup>] = α · <span class="var">m</span></span> <span class="sep">e</span> <span class="pt">[HX]<sub>equilíbrio</sub> = <span class="var">m</span> − α·<span class="var">m</span> = <span class="var">m</span>(1 − α)</span></div>
+  <div class="nb">
+    <span class="nb-t">No seu caderno — ácido acético 0,1 mol/L com α = 1%</span>
+    <p class="math">0,1 mol/L ——— 100%<br><span class="var">x</span> ——— 1% (α)<br><span class="var">x</span> = 1 × 10<sup>−3</sup> mol/L → [H<sup>+</sup>] → pH = −log[H<sup>+</sup>]</p>
+  </div>
+  <p>A regra de três é exatamente o produto α·<span class="var">m</span>: 0,1 × <span class="frac"><span>1</span><span>100</span></span> = 10<sup>−3</sup> mol/L. Ela é o caminho mais direto quando o exercício fornece α.</p>
+  <h5 class="mini">Classificação pela força (como está no caderno)</h5>
+  <ul>
+    <li><strong>α &gt; 50% → ácido forte</strong> (a maior parte das moléculas se ioniza)</li>
+    <li><strong>α &lt; 50% → ácido fraco</strong></li>
+  </ul>
+  <div class="box k-com" role="note">
+    <span class="box-t">Complemento para melhor compreensão</span>
+    <p>Muitos livros didáticos brasileiros usam <strong>três faixas</strong>: forte (α &gt; 50%), moderado ou semiforte (5% &lt; α &lt; 50%) e fraco (α &lt; 5%) — ver, por exemplo, o resumo do <a href="https://www.infoescola.com/quimica/acidos-fortes/" target="_blank" rel="noopener">InfoEscola</a>, que cita Feltre e a coleção <em>Ser Protagonista</em>. Na prova da escola, use o critério do seu professor (no caderno, duas faixas). O HF do Exemplo 1 (α = 25%) é “fraco” pelo critério do caderno e “moderado” pelo de três faixas.</p>
+  </div>
+  <div class="box k-trap" role="note">
+    <span class="box-t">Pegadinha — α não é uma constante do ácido</span>
+    <p>O grau de ionização muda com a concentração e com a temperatura: você verá na <a href="#t6-ostwald">Lei de Ostwald</a> que diluir um ácido fraco <em>aumenta</em> α. Por isso, comparar ácidos pelo α só é justo em soluções de mesma concentração e mesma temperatura. O K<sub>a</sub> não depende da concentração — é a medida mais confiável de força.</p>
+  </div>
+
+  <!-- 3.3 -->
+  <h4 class="topic" id="t3-ka-kb"><span class="n">3.3</span> K<sub>a</sub> e K<sub>b</sub>: medindo a força de ácidos e bases</h4>
+  <p>No caderno: “K<sub>i</sub> pode ser K<sub>a</sub> ⇒ ácido, ou K<sub>b</sub> ⇒ base”. É a mesma constante de ionização, com o nome trocado conforme a substância. Por isso também aparece “K<sub>a</sub> = K<sub>i</sub>” na resolução do ácido HX.</p>
+  <div class="box k-for" role="note">
+    <span class="box-t">As duas expressões do caderno</span>
+    <div class="fdisp"><span class="pt">ácido: HX ⇌ H<sup>+</sup> + X<sup>−</sup></span> <span class="pt"><span class="ar">→</span>K<sub>a</sub> = <span class="frac"><span>[H<sup>+</sup>] · [X<sup>−</sup>]</span><span>[HX]</span></span></span></div>
+    <div class="fdisp"><span class="pt">base: XOH ⇌ X<sup>+</sup> + OH<sup>−</sup></span> <span class="pt"><span class="ar">→</span>K<sub>b</sub> = <span class="frac"><span>[X<sup>+</sup>] · [OH<sup>−</sup>]</span><span>[XOH]</span></span></span></div>
+    <p class="cond">As setas ↑ que você desenhou mostram a lógica: quanto maiores as concentrações de íons no numerador (mais ionização ou dissociação), maior o valor da constante.</p>
+  </div>
+  <div class="box k-fix" role="note">
+    <span class="box-t">Correção necessária</span>
+    <p>No caderno: “Quanto mais forte o K<sub>a</sub> ou K<sub>b</sub>, mais forte é o ácido”. Há dois ajustes: K<sub>a</sub> e K<sub>b</sub> são números, então dizemos “quanto <strong>maior</strong>”; e K<sub>b</sub> mede a força de <strong>bases</strong>, não de ácidos.</p>
+    <p><strong>Forma correta:</strong> quanto maior o K<sub>a</sub>, mais forte o ácido; quanto maior o K<sub>b</sub>, mais forte a base.</p>
+  </div>
+  <div class="box k-com" role="note">
+    <span class="box-t">Complemento — um exemplo real de base fraca</span>
+    <p>A amônia: NH<sub>3</sub> + H<sub>2</sub>O ⇌ NH<sub>4</sub><sup>+</sup> + OH<sup>−</sup>, com K<sub>b</sub> ≈ 1,8 × 10<sup>−5</sup> a 25 °C (tabela da <a href="https://wisc.pb.unizin.org/chem109/?p=1532" target="_blank" rel="noopener">Universidade de Wisconsin–Madison</a>: 1,77 × 10<sup>−5</sup>). Muitos livros escrevem NH<sub>4</sub>OH ⇌ NH<sub>4</sub><sup>+</sup> + OH<sup>−</sup>, que é exatamente o modelo XOH do caderno.</p>
+  </div>
+  <h5 class="mini">Os ácidos que aparecem no caderno, do mais forte ao mais fraco</h5>
+  <div class="tw">
+    <table class="wide">
+      <thead><tr><th scope="col">Ácido</th><th scope="col">Fórmula</th><th scope="col">K<sub>a</sub> usado no caderno</th><th scope="col">Valor tabelado a 25 °C <small>(complemento)</small></th></tr></thead>
+      <tbody>
+        <tr><td>clorídrico</td><td class="math">HCl</td><td>“muito grande”</td><td>muito grande: em solução diluída, ≈ 100% ionizado</td></tr>
+        <tr><td>cloroacético</td><td class="math">ClCH<sub>2</sub>COOH</td><td class="math">1,4 × 10<sup>−3</sup></td><td class="math">1,3 a 1,4 × 10<sup>−3</sup></td></tr>
+        <tr><td>fluorídrico</td><td class="math">HF</td><td>Exemplo 1: 8,3 × 10<sup>−4</sup> (calculado em <a href="#t6-ostwald">3.6</a>)</td><td class="math">6,3 a 6,8 × 10<sup>−4</sup></td></tr>
+        <tr><td>acético</td><td class="math">CH<sub>3</sub>COOH</td><td>2 × 10<sup>−5</sup> (página “Eq. Iônicos”); 1 × 10<sup>−5</sup> (exercício com α = 1%)</td><td class="math">1,75 a 1,8 × 10<sup>−5</sup></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted"><small>Valores tabelados: <a href="https://chem.libretexts.org/Ancillary_Materials/Reference/Reference_Tables/Equilibrium_Constants/E1:_Acid_Dissociation_Constants_at_25C" target="_blank" rel="noopener">LibreTexts, tabela E1</a> (acético 1,75 × 10<sup>−5</sup>; cloroacético 1,3 × 10<sup>−3</sup>; HF 6,3 × 10<sup>−4</sup>) e tabelas da Universidade de Wisconsin–Madison (<a href="https://wisc.pb.unizin.org/chem109fall2022/?p=911" target="_blank" rel="noopener">cloroacético 1,4 × 10<sup>−3</sup></a>; <a href="https://wisc.pb.unizin.org/chem109fall2020ver03/?p=727" target="_blank" rel="noopener">HF 6,8 × 10<sup>−4</sup></a>). Fontes diferentes trazem valores um pouco diferentes, e exercícios usam números arredondados para facilitar a conta. <strong>Na prova, use sempre o valor dado no enunciado.</strong></small></p>
+  <div class="box k-com" role="note">
+    <span class="box-t">Complemento — conexão com Química Orgânica</span>
+    <p>Por que o ácido cloroacético tem K<sub>a</sub> cerca de 70 a 80 vezes maior que o do acético? O cloro, muito eletronegativo, puxa elétrons ao longo da cadeia (efeito indutivo). Isso espalha a carga negativa do ânion formado e o estabiliza, então perder o H<sup>+</sup> fica mais favorável. Essa ideia volta quando você estudar a acidez dos ácidos carboxílicos.</p>
+  </div>
+
+  <!-- 3.4 -->
+  <h4 class="topic" id="t4-aluminio"><span class="n">3.4</span> Aplicação: alumínio + três ácidos — velocidade × quantidade</h4>
+  <div class="nb">
+    <span class="nb-t">No seu caderno</span>
+    <p class="math">Al(s) + HAc → AlAc + H<sub>2</sub>(g) &nbsp;<small class="muted">— “ácido acético”, K<sub>a</sub> = 2 · 10<sup>−5</sup>, setas para baixo</small></p>
+    <p class="math">Al(s) + HCl → AlCl<sub>3</sub> + H<sub>2</sub>(g) &nbsp;<small class="muted">— “ácido clorídrico”, “K<sub>a</sub> muito grande”, setas para cima</small></p>
+    <p class="math">Al(s) + HAcCl → AlAcCl + H<sub>2</sub>(g) &nbsp;<small class="muted">— K<sub>a</sub> = 1,4 · 10<sup>−3</sup></small></p>
+    <p><em>“Qual reação é a mais rápida? — A reação com HCl, pois o K<sub>a</sub> grande indica grande quantidade em mols de H<sup>+</sup> e, portanto, grande quantidade de gás H<sub>2</sub> produzido.”</em></p>
+  </div>
+  <div class="box k-int" role="note">
+    <span class="box-t">Atenção à interpretação</span>
+    <ul>
+      <li><strong>HAc</strong> é a abreviação usual de ácido acético (Ac = grupo acetato, CH<sub>3</sub>COO; não confunda com o símbolo do elemento actínio).</li>
+      <li><strong>HAcCl</strong> foi lido como <strong>ácido cloroacético</strong> (ClCH<sub>2</sub>COOH): é a leitura mais coerente, porque o K<sub>a</sub> anotado (1,4 · 10<sup>−3</sup>) coincide com o valor tabelado desse ácido.</li>
+      <li>As setas vermelhas (↓ no acético, ↑ no HCl) foram lidas como liberação de H<sub>2</sub> mais lenta e mais rápida.</li>
+    </ul>
+  </div>
+  <div class="box k-fix" role="note">
+    <span class="box-t">Correção necessária 1 — as equações precisam de balanceamento</span>
+    <p>O alumínio forma o íon Al<sup>3+</sup>; para neutralizar a carga, o sal precisa de <strong>três</strong> ânions. Balanceando:</p>
+    <div class="eq">2 Al(s) + 6 HCl(aq) → 2 AlCl<sub>3</sub>(aq) + 3 H<sub>2</sub>(g)</div>
+    <div class="eq">2 Al(s) + 6 CH<sub>3</sub>COOH(aq) → 2 Al(CH<sub>3</sub>COO)<sub>3</sub>(aq) + 3 H<sub>2</sub>(g)</div>
+    <div class="eq">2 Al(s) + 6 ClCH<sub>2</sub>COOH(aq) → 2 Al(ClCH<sub>2</sub>COO)<sub>3</sub>(aq) + 3 H<sub>2</sub>(g)</div>
+    <p>As três têm a mesma essência, mostrada pela equação iônica:</p>
+    <div class="eq">2 Al(s) + 6 H<sup>+</sup>(aq) → 2 Al<sup>3+</sup>(aq) + 3 H<sub>2</sub>(g)</div>
+    <p><strong>Quem reage com o alumínio é o H<sup>+</sup>.</strong> Essa é a chave do resto do tópico.</p>
+  </div>
+  <div class="box k-fix" role="note">
+    <span class="box-t">Correção necessária 2 — a justificativa mistura velocidade e quantidade</span>
+    <p>A conclusão do caderno está certa: a reação com HCl é a mais rápida. A justificativa, porém, junta duas grandezas diferentes:</p>
+    <ul>
+      <li><strong>Velocidade</strong> depende da concentração de H<sup>+</sup> <em>livre a cada instante</em>. K<sub>a</sub> grande → mais H<sup>+</sup> livre → mais colisões efetivas entre H<sup>+</sup> e a superfície do metal por segundo → H<sub>2</sub> sai mais depressa. <span class="muted">(Ideia da teoria das colisões, da Cinética Química.)</span></li>
+      <li><strong>Quantidade total de H<sub>2</sub></strong> depende da quantidade total de ácido, em mol — não do K<sub>a</sub>. Quando o alumínio consome o H<sup>+</sup> de um ácido fraco, o equilíbrio HX ⇌ H<sup>+</sup> + X<sup>−</sup> se desloca para a direita (Le Chatelier) e novas moléculas se ionizam, repondo H<sup>+</sup>. No fim, todo o ácido reage.</li>
+    </ul>
+    <p><strong>Forma correta:</strong> com mesma concentração e mesmo volume de ácido, alumínio em excesso e mesmas condições (temperatura, superfície do metal), as três reações liberam a <strong>mesma quantidade total</strong> de H<sub>2</sub>, mas em velocidades diferentes: HCl &gt; cloroacético &gt; acético.</p>
+  </div>
+  <div class="tw">
+    <table class="mid">
+      <caption>Mesma concentração e mesmo volume de ácido, alumínio em excesso</caption>
+      <thead><tr><th scope="col"></th><th scope="col">HCl</th><th scope="col">cloroacético</th><th scope="col">acético</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">K<sub>a</sub></th><td>muito grande</td><td class="math">1,4 × 10<sup>−3</sup></td><td class="math">2 × 10<sup>−5</sup></td></tr>
+        <tr><th scope="row">H<sup>+</sup> livre no início</th><td>maior</td><td>intermediário</td><td>menor</td></tr>
+        <tr><th scope="row">Velocidade de liberação de H<sub>2</sub></th><td><strong>maior</strong></td><td>intermediária</td><td>menor</td></tr>
+        <tr><th scope="row">Quantidade total de H<sub>2</sub> ao final</th><td colspan="3" style="text-align:center"><strong>igual nos três</strong> (mesma quantidade em mol de ácido)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <figure class="fig" id="fig-h2">
+    <div class="fig-scroll">
+      <svg viewBox="0 0 640 330" role="img" aria-labelledby="fig-h2-t fig-h2-d">
+        <title id="fig-h2-t">Gráfico qualitativo do volume de H2 liberado ao longo do tempo</title>
+        <desc id="fig-h2-d">Três curvas partem do zero. A do HCl sobe mais depressa, a do ácido cloroacético sobe em ritmo intermediário e a do ácido acético sobe devagar. Todas tendem ao mesmo patamar, que representa a mesma quantidade final de H2.</desc>
+        <defs>
+          <marker id="axh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink-2)"/></marker>
+        </defs>
+        <text class="t3" x="84" y="50" font-size="12.5">curva mais íngreme = H₂ liberado mais depressa</text>
+        <line class="grid" x1="70" y1="80" x2="612" y2="80" stroke-width="1.5" stroke-dasharray="6 5"/>
+        <text class="t2" x="608" y="70" font-size="13" text-anchor="end">mesma quantidade final de H₂</text>
+        <line class="ax" x1="70" y1="282" x2="70" y2="24" stroke-width="1.6" marker-end="url(#axh)"/>
+        <line class="ax" x1="68" y1="280" x2="622" y2="280" stroke-width="1.6" marker-end="url(#axh)"/>
+        <text class="t2" x="40" y="160" font-size="13" text-anchor="middle" transform="rotate(-90 40 160)">volume de H₂ liberado</text>
+        <text class="t2" x="618" y="304" font-size="13" text-anchor="end">tempo</text>
+        <text class="t3" x="62" y="298" font-size="12" text-anchor="middle">0</text>
+        <polyline class="hcl" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" points="70.0,280.0 79.0,238.4 88.1,205.4 97.1,179.3 106.1,158.6 115.2,142.3 124.2,129.3 133.2,119.1 142.3,110.9 151.3,104.5 160.3,99.4 169.4,95.4 178.4,92.2 187.4,89.6 196.5,87.6 205.5,86.0 214.5,84.8 223.6,83.8 232.6,83.0 241.6,82.4 250.7,81.9 259.7,81.5 268.7,81.2 277.8,80.9 286.8,80.7 295.8,80.6 304.9,80.5 313.9,80.4 322.9,80.3 332.0,80.2 350.0,80.1 386.2,80.1 395.2,80.0 612.0,80.0"/>
+        <polyline class="clo" stroke-width="3" stroke-linejoin="round" stroke-dasharray="10 5" points="70.0,280.0 79.0,264.0 88.1,249.3 97.1,235.8 106.1,223.3 115.2,211.8 124.2,201.3 133.2,191.6 142.3,182.7 151.3,174.5 160.3,166.9 169.4,160.0 178.4,153.6 187.4,147.7 196.5,142.3 205.5,137.3 214.5,132.7 223.6,128.5 232.6,124.6 241.6,121.1 250.7,117.8 259.7,114.8 268.7,112.0 277.8,109.4 286.8,107.1 295.8,104.9 304.9,102.9 313.9,101.1 322.9,99.4 332.0,97.8 341.0,96.4 350.0,95.1 359.1,93.9 368.1,92.8 377.1,91.8 386.2,90.8 395.2,90.0 404.2,89.2 413.3,88.4 422.3,87.8 431.3,87.1 440.4,86.6 449.4,86.0 458.4,85.6 467.5,85.1 476.5,84.7 485.5,84.3 494.6,84.0 503.6,83.7 512.6,83.4 521.7,83.1 530.7,82.9 539.7,82.6 548.8,82.4 557.8,82.2 566.8,82.0 575.9,81.9 584.9,81.7 593.9,81.6 603.0,81.5 612.0,81.3"/>
+        <polyline class="ace" stroke-width="3" stroke-linejoin="round" stroke-dasharray="2 5 9 5" points="70.0,280.0 79.0,274.7 88.1,269.6 97.1,264.6 106.1,259.8 115.2,255.0 124.2,250.4 133.2,245.9 142.3,241.6 151.3,237.3 160.3,233.2 169.4,229.2 178.4,225.2 187.4,221.4 196.5,217.7 205.5,214.1 214.5,210.5 223.6,207.1 232.6,203.8 241.6,200.5 250.7,197.3 259.7,194.2 268.7,191.2 277.8,188.3 286.8,185.5 295.8,182.7 304.9,180.0 313.9,177.4 322.9,174.8 332.0,172.3 341.0,169.9 350.0,167.5 359.1,165.2 368.1,163.0 377.1,160.8 386.2,158.6 395.2,156.6 404.2,154.6 413.3,152.6 422.3,150.7 431.3,148.8 440.4,147.0 449.4,145.3 458.4,143.5 467.5,141.9 476.5,140.2 485.5,138.7 494.6,137.1 503.6,135.6 512.6,134.1 521.7,132.7 530.7,131.3 539.7,130.0 548.8,128.7 557.8,127.4 566.8,126.1 575.9,124.9 584.9,123.7 593.9,122.6 603.0,121.5 612.0,120.4"/>
+        <g font-size="13">
+          <line class="hcl" x1="372" y1="203" x2="404" y2="203" stroke-width="3"/>
+          <text class="t" x="412" y="207">HCl (K<tspan dy="4" font-size="10">a</tspan><tspan dy="-4"> muito grande)</tspan></text>
+          <line class="clo" x1="372" y1="227" x2="404" y2="227" stroke-width="3" stroke-dasharray="10 5"/>
+          <text class="t" x="412" y="231">cloroacético (K<tspan dy="4" font-size="10">a</tspan><tspan dy="-4"> = 1,4 × 10⁻³)</tspan></text>
+          <line class="ace" x1="372" y1="251" x2="404" y2="251" stroke-width="3" stroke-dasharray="2 5 9 5"/>
+          <text class="t" x="412" y="255">acético (K<tspan dy="4" font-size="10">a</tspan><tspan dy="-4"> = 2 × 10⁻⁵)</tspan></text>
+        </g>
+      </svg>
+    </div>
+    <figcaption><strong>Como ler (esquema qualitativo, sem escala).</strong> O eixo horizontal é o tempo; o vertical, o volume total de H<sub>2</sub> liberado até aquele instante. A <em>inclinação</em> da curva é a velocidade da reação; a <em>altura final</em> (o patamar) é a quantidade total. As três curvas tendem ao mesmo patamar, cada uma no seu ritmo — a do ácido acético ainda está subindo no fim do trecho desenhado. O gráfico <strong>não</strong> autoriza concluir que um ácido produz mais H<sub>2</sub> que o outro.</figcaption>
+  </figure>
+  <div class="box k-ves" role="note">
+    <span class="box-t">No vestibular — exemplo real verificado</span>
+    <p>A FUVEST 2015 (1ª fase, prova V, questão 80) cobrou a mesma ideia em outro contexto: soluções de HCl e de ácido acético de mesma concentração (0,10 mol/L), com pH 1,0 e 2,9, são tituladas com NaOH; pergunta-se a relação entre os volumes de base gastos. Como os dois ácidos têm a mesma quantidade em mol e reagem 1 : 1 com o NaOH, os volumes são <strong>iguais</strong> — a força do ácido muda o pH, não a quantidade que reage. <a href="https://acervo.fuvest.br/fuvest/2015/fuv2015_1fase_prova_V.pdf" target="_blank" rel="noopener">Prova no acervo oficial da FUVEST</a>.</p>
+    <p class="muted"><small>A questão foi conferida no PDF oficial; o gabarito oficial não pôde ser aberto nesta verificação, e a resposta acima decorre do raciocínio químico.</small></p>
+  </div>
+
+  <!-- 3.5 -->
+  <h4 class="topic" id="t5-tabela"><span class="n">3.5</span> A tabela de equilíbrio: Início / Reage–Forma / Equilíbrio</h4>
+  <p>A ferramenta principal do caderno é uma tabela com três linhas. Ela organiza o que existia, o que mudou e o que sobrou:</p>
+  <ul>
+    <li><strong>I (início):</strong> concentrações antes da ionização. Os íons começam em zero <span class="muted">(desprezando a quantidade mínima que vem da própria água — tópico <a href="#t8-kw">3.8</a>)</span>.</li>
+    <li><strong>R/F (reage/forma):</strong> quanto o ácido perde (sinal −) e quanto de cada íon se forma (sinal +), na proporção dos coeficientes — <span class="nowrap">1 : 1 : 1</span> para HX.</li>
+    <li><strong>E (equilíbrio):</strong> início + variação. <strong>São esses valores que entram no K<sub>a</sub>.</strong></li>
+  </ul>
+  <p class="muted"><small>Atenção à interpretação: o caderno escreve só “R/F”; a leitura “reage/forma” é a usual para essa notação. Na página do ácido acético, a primeira linha “R:” traz a reação.</small></p>
+
+  <div class="box k-ex" role="note">
+    <span class="box-t">Exemplo resolvido do caderno</span>
+    <p><strong>Determine o K<sub>a</sub> para um ácido monocarboxílico HX, 0,1 mol/L, com α = 3,7%.</strong></p>
+    <ol class="steps">
+      <li><strong>Entender o enunciado.</strong> “Monocarboxílico” = tem um único grupo –COOH, logo um único H ionizável. Por isso o ácido é escrito HX e a proporção é <span class="nowrap">1 : 1 : 1</span>. <span class="muted">(Complemento: no ácido acético, CH<sub>3</sub>COOH, só o H do –COOH ioniza; os três H do CH<sub>3</sub> não.)</span></li>
+      <li><strong>Equação:</strong> HX(aq) ⇌ H<sup>+</sup>(aq) + X<sup>−</sup>(aq).</li>
+      <li><strong>Quanto ionizou (regra de três):</strong> 0,1 mol/L ——— 100%; <span class="var">x</span> ——— 3,7% → <span class="var">x</span> = 0,1 × <span class="frac"><span>3,7</span><span>100</span></span> = 3,7 × 10<sup>−3</sup> mol/L.</li>
+      <li><strong>Montar a tabela:</strong>
+        <div class="tw">
+          <table class="ice">
+            <thead><tr><th scope="col"></th><th scope="col">HX</th><th scope="col">H<sup>+</sup></th><th scope="col">X<sup>−</sup></th></tr></thead>
+            <tbody>
+              <tr><th scope="row">I</th><td>0,1</td><td>0</td><td>0</td></tr>
+              <tr><th scope="row">R/F</th><td>−3,7&nbsp;×&nbsp;10<sup>−3</sup></td><td>+3,7&nbsp;×&nbsp;10<sup>−3</sup></td><td>+3,7&nbsp;×&nbsp;10<sup>−3</sup></td></tr>
+              <tr class="r-e"><th scope="row">E</th><td>0,0963 ≈ 0,1</td><td>3,7&nbsp;×&nbsp;10<sup>−3</sup></td><td>3,7&nbsp;×&nbsp;10<sup>−3</sup></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <span class="muted"><small>(Concentrações em mol/L. No caderno, o sinal de menos não aparece na linha R/F do HX; ele indica que o HX é consumido.)</small></span>
+      </li>
+      <li><strong>Aproximar com critério.</strong> 0,1 − 0,0037 = 0,0963 ≈ 0,1, porque α é pequeno (3,7%): o erro da aproximação é de só 3,7%.</li>
+      <li><strong>Calcular:</strong>
+        <div class="fdisp">K<sub>a</sub> = <span class="frac"><span>(3,7 × 10<sup>−3</sup>) · (3,7 × 10<sup>−3</sup>)</span><span>10<sup>−1</sup></span></span> = <span class="frac"><span>13,69 × 10<sup>−6</sup></span><span>10<sup>−1</sup></span></span> = 13,69 × 10<sup>−5</sup> ≈ <strong>1,4 × 10<sup>−4</sup></strong></div>
+      </li>
+      <li><strong>Conferir por dois caminhos.</strong> Sem aproximar: 13,69 × 10<sup>−6</sup> ÷ 0,0963 = 1,42 × 10<sup>−4</sup> → mesmo resultado com dois algarismos. Pela fórmula destacada no caderno (próximo tópico): (0,037)² · 0,1 = 1,369 × 10<sup>−4</sup> ✓. E faz sentido: um K<sub>a</sub> bem menor que 1 é próprio de ácido fraco.</li>
+    </ol>
+  </div>
+  <div class="box k-int" role="note">
+    <span class="box-t">Atenção à interpretação</span>
+    <p>Na foto, essa primeira resposta aparece como “K<sub>a</sub> ≅ 1,4 · 10<sup>4</sup>”, sem sinal de menos visível no expoente. O valor correto é <strong>1,4 × 10<sup>−4</sup></strong>, como o próprio caderno confirma logo abaixo (K<sub>i</sub> = (0,037)² · 0,1 = 1,4 × 10<sup>−4</sup>). Um K<sub>a</sub> de 10<sup>4</sup> indicaria um ácido fortíssimo — incompatível com α = 3,7%. Vale conferir no seu caderno.</p>
+  </div>
+
+  <!-- 3.6 -->
+  <h4 class="topic" id="t6-ostwald"><span class="n">3.6</span> Lei da Diluição de Ostwald</h4>
+  <p>A tabela do tópico anterior pode ser montada com letras em vez de números. O resultado é uma fórmula que liga diretamente α, <span class="var">m</span> e K<sub>a</sub>.</p>
+  <div class="tw">
+    <table class="ice">
+      <caption>Monoácido HX de concentração inicial <span class="var">m</span> e grau de ionização α</caption>
+      <thead><tr><th scope="col"></th><th scope="col">HX</th><th scope="col">H<sup>+</sup></th><th scope="col">X<sup>−</sup></th></tr></thead>
+      <tbody>
+        <tr><th scope="row">I</th><td><span class="var">m</span></td><td>0</td><td>0</td></tr>
+        <tr><th scope="row">R/F</th><td>− α·<span class="var">m</span></td><td>+ α·<span class="var">m</span></td><td>+ α·<span class="var">m</span></td></tr>
+        <tr class="r-e"><th scope="row">E</th><td><span class="var">m</span>(1 − α)</td><td>α·<span class="var">m</span></td><td>α·<span class="var">m</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="fdisp">K<sub>a</sub> = <span class="frac"><span>(α·<span class="var">m</span>) · (α·<span class="var">m</span>)</span><span><span class="var">m</span>(1 − α)</span></span> = <span class="frac"><span>α²·<span class="var">m</span>²</span><span><span class="var">m</span>(1 − α)</span></span> = <span class="frac"><span>α²·<span class="var">m</span></span><span>1 − α</span></span></div>
+  <div class="box k-for" role="note">
+    <span class="box-t">Lei da Diluição de Ostwald</span>
+    <div class="fdisp big"><span class="pt">K<sub>a</sub> = <span class="frac"><span>α² · <span class="var">m</span></span><span>1 − α</span></span></span> <span class="sep">e, se α ≤ 5%:</span> <span class="pt">K<sub>a</sub> ≈ α² · <span class="var">m</span></span></div>
+    <ul class="legend">
+      <li><strong>α:</strong> grau de ionização em forma decimal (3,7% → 0,037).</li>
+      <li><strong><span class="var">m</span>:</strong> concentração inicial do ácido, em mol/L.</li>
+      <li><strong>Vale para:</strong> monoácido (proporção <span class="nowrap">1 : 1 : 1</span>). Com K<sub>b</sub> no lugar de K<sub>a</sub>, vale para monobase XOH.</li>
+      <li><strong>Simplificação</strong> (a fórmula que você destacou, K<sub>i</sub> = α²·<span class="var">m</span>): quando α é pequeno, 1 − α ≈ 1. Regra prática usual: α ≤ 5%. Na dúvida, a fórmula completa nunca está errada.</li>
+    </ul>
+  </div>
+  <p><strong>Por que “diluição”?</strong> A uma temperatura fixa, K<sub>a</sub> é constante. Se a concentração <span class="var">m</span> diminui (diluição), α precisa aumentar para que α²·<span class="var">m</span>/(1 − α) continue igual ao mesmo K<sub>a</sub>. Enunciado da lei: <em>a temperatura constante, quanto mais diluída a solução de um eletrólito fraco, maior o seu grau de ionização.</em></p>
+
+  <div class="box k-ex" role="note">
+    <span class="box-t">Exercício 3 do caderno — fórmula simplificada</span>
+    <div class="fdisp">K<sub>a</sub> = (3,7 × 10<sup>−2</sup>)² · 0,1 = 13,69 × 10<sup>−4</sup> · 10<sup>−1</sup> ≈ 14 × 10<sup>−5</sup> = <strong>1,4 × 10<sup>−4</sup></strong></div>
+    <p>São os mesmos dados do ácido HX do tópico 3.5 (0,1 mol/L, α = 3,7%) — e o mesmo resultado, agora em uma linha. A simplificação é válida porque α = 3,7% ≤ 5%.</p>
+    <p class="muted"><small>Atenção à interpretação: o expoente dentro dos parênteses está pouco legível na foto. Pela conta seguinte (14 · 10<sup>−4</sup>), só pode ser 10<sup>−2</sup> — que é exatamente 3,7% = 3,7 × 10<sup>−2</sup>.</small></p>
+  </div>
+
+  <div class="box k-ex" role="note">
+    <span class="box-t">Exercício 2 do caderno — fórmula completa</span>
+    <div class="fdisp">K<sub>a</sub> = <span class="frac"><span>α² · <span class="var">m</span></span><span>1 − α</span></span> = <span class="frac"><span>0,0001 · 0,2</span><span>0,99</span></span> = <span class="frac"><span>0,00002</span><span>0,99</span></span> ≈ <span class="frac"><span>0,00002</span><span>1</span></span> = <strong>2 × 10<sup>−5</sup></strong></div>
+    <p>O caderno aproximou 0,99 ≈ 1, o que é válido porque α = 1% é pequeno (o valor exato é 2,02 × 10<sup>−5</sup>).</p>
+    <p class="muted"><small>Atenção à interpretação: o enunciado do exercício 2 não aparece nas fotos. Pelos números da resolução, os dados são α = 1% (α² = 0,0001; 1 − α = 0,99) e <span class="var">m</span> = 0,2 mol/L.</small></p>
+  </div>
+
+  <div class="box k-ex" role="note">
+    <span class="box-t">Exemplo 1 do caderno — quando NÃO dá para simplificar</span>
+    <p><strong>Dados</strong> (reconstruídos da resolução, pois o enunciado não aparece nas fotos): HF 0,01 mol/L com α = 25%.</p>
+    <ol class="steps">
+      <li><strong>a) Quanto ionizou (regra de três):</strong> 0,01 mol/L ——— 100%; <span class="var">x</span> ——— 25% → <span class="var">x</span> = 0,0025 mol/L = 2,5 × 10<sup>−3</sup> mol/L.
+        <div class="tw">
+          <table class="ice">
+            <thead><tr><th scope="col"></th><th scope="col">HF</th><th scope="col">H<sup>+</sup></th><th scope="col">F<sup>−</sup></th></tr></thead>
+            <tbody>
+              <tr><th scope="row">I</th><td>0,01</td><td>0</td><td>0</td></tr>
+              <tr><th scope="row">R/F</th><td>−2,5&nbsp;×&nbsp;10<sup>−3</sup></td><td>+2,5&nbsp;×&nbsp;10<sup>−3</sup></td><td>+2,5&nbsp;×&nbsp;10<sup>−3</sup></td></tr>
+              <tr class="r-e"><th scope="row">E</th><td>7,5&nbsp;×&nbsp;10<sup>−3</sup></td><td>2,5&nbsp;×&nbsp;10<sup>−3</sup></td><td>2,5&nbsp;×&nbsp;10<sup>−3</sup></td></tr>
+            </tbody>
+          </table>
+        </div>
+        Repare que aqui o caderno <strong>não</strong> aproximou: 0,01 − 0,0025 = 0,0075. A diferença é de 25% — grande demais para ser desprezada.
+      </li>
+      <li><strong>b) Expressão e substituição (como no caderno):</strong>
+        <div class="fdisp">K<sub>a</sub> = <span class="frac"><span>[H<sup>+</sup>] · [F<sup>−</sup>]</span><span>[HF]</span></span> = <span class="frac"><span>(2,5 × 10<sup>−3</sup>) · (2,5 × 10<sup>−3</sup>)</span><span>7,5 × 10<sup>−3</sup></span></span> = <span class="frac"><span>6,25 × 10<sup>−6</sup></span><span>7,5 × 10<sup>−3</sup></span></span></div>
+      </li>
+      <li><span class="chip k-com">Complemento</span> <strong>A divisão final</strong> (o caderno parou na linha anterior): divida os números e as potências separadamente — 6,25 ÷ 7,5 = 0,833… e 10<sup>−6</sup> ÷ 10<sup>−3</sup> = 10<sup>−3</sup>.
+        <div class="fdisp">K<sub>a</sub> = 0,833 × 10<sup>−3</sup> ≈ <strong>8,3 × 10<sup>−4</sup></strong></div>
+      </li>
+      <li><strong>Conferência pela fórmula completa de Ostwald:</strong> (0,25)² · 0,01 ÷ (1 − 0,25) = 6,25 × 10<sup>−4</sup> ÷ 0,75 = 8,3 × 10<sup>−4</sup> ✓.</li>
+      <li><strong>E se alguém simplificasse?</strong> α² · <span class="var">m</span> = 6,25 × 10<sup>−4</sup> — um valor 25% abaixo do correto. Por isso a simplificação exige α pequeno.</li>
+    </ol>
+    <p class="muted"><small>Complemento: o K<sub>a</sub> tabelado do HF a 25 °C fica entre 6,3 e 6,8 × 10<sup>−4</sup>, da mesma ordem do resultado; dados de exercício são idealizados.</small></p>
+  </div>
+
+  <div class="box k-trap" role="note">
+    <span class="box-t">Pegadinha — α em porcentagem dentro da fórmula</span>
+    <p>(3,7)² · 0,1 = 1,369: um “K<sub>a</sub>” maior que 1 para um ácido com 3,7% de ionização é absurdo. Sempre converta antes de substituir: 3,7% = 0,037.</p>
+  </div>
+
+  <div class="box k-com" role="note">
+    <span class="box-t">Aprofundamento — a diluição em números (complemento)</span>
+    <p>Da forma simplificada, K<sub>a</sub> ≈ α²·<span class="var">m</span>, vem α ≈ √(K<sub>a</sub> ÷ <span class="var">m</span>). Usando o ácido acético do caderno (K<sub>a</sub> = 1 × 10<sup>−5</sup>):</p>
+    <div class="tw">
+      <table class="mid">
+        <thead><tr><th scope="col">Concentração <span class="var">m</span></th><th scope="col">α</th><th scope="col">[H<sup>+</sup>] = α·<span class="var">m</span></th><th scope="col">pH</th></tr></thead>
+        <tbody>
+          <tr><td>0,1 mol/L</td><td>√(10<sup>−5</sup> ÷ 10<sup>−1</sup>) = 10<sup>−2</sup> = 1%</td><td>1 × 10<sup>−3</sup> mol/L</td><td>3</td></tr>
+          <tr><td>0,001 mol/L (diluída 100 vezes)</td><td>√(10<sup>−5</sup> ÷ 10<sup>−3</sup>) = 0,1 ≈ 10% <small class="muted">(conta exata: 9,5%)</small></td><td>≈ 1 × 10<sup>−4</sup> mol/L</td><td>≈ 4</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Leitura:</strong> diluir 100 vezes aumentou α cerca de 10 vezes, mas diminuiu [H<sup>+</sup>] cerca de 10 vezes — a solução ficou <em>menos</em> ácida (pH subiu de 3 para 4). α e acidez andaram em sentidos opostos. Como α chegou a ~10%, a fórmula simplificada fica no limite; resolvendo a forma completa, α ≈ 9,5% e pH ≈ 4,0.</p>
+  </div>
+
+  <!-- 3.7 -->
+  <h4 class="topic" id="t7-pka"><span class="n">3.7</span> pK<sub>a</sub>: a força do ácido em escala logarítmica</h4>
+  <div class="nb">
+    <span class="nb-t">No seu caderno</span>
+    <p class="math">[CH<sub>3</sub>COOH] = 0,1 mol/L &nbsp;·&nbsp; α = 1% (1/100 ou 10<sup>−2</sup>)</p>
+    <p class="math">K<sub>a</sub> = α² · <span class="var">m</span> = (10<sup>−2</sup>)² · 10<sup>−1</sup> = 1 × 10<sup>−5</sup> &nbsp;&nbsp;|&nbsp;&nbsp; pK<sub>a</sub> = −log K<sub>a</sub> = −log 10<sup>−5</sup> = −(−5 · log 10) = 5</p>
+    <p>“Quanto menor o valor do pK<sub>a</sub>, mais forte o ácido é.”</p>
+  </div>
+  <p>Passo a passo: α = 1% = 10<sup>−2</sup>, então α² = 10<sup>−4</sup>; vezes <span class="var">m</span> = 10<sup>−1</sup> dá 10<sup>−5</sup> (soma dos expoentes). A simplificação vale porque α = 1%. Depois, −log 10<sup>−5</sup> = −(−5) = 5.</p>
+  <div class="box k-def" role="note">
+    <span class="box-t">Definição</span>
+    <div class="fdisp">pK<sub>a</sub> = −log K<sub>a</sub></div>
+    <ul class="legend">
+      <li>O “p” significa “aplique −log”. Ele transforma números minúsculos (10<sup>−5</sup>) em números amigáveis (5).</li>
+      <li><strong>Menor pK<sub>a</sub> → ácido mais forte</strong>, porque −log inverte a ordem: K<sub>a</sub> maior gera pK<sub>a</sub> menor.</li>
+      <li>Cada unidade de pK<sub>a</sub> corresponde a um fator 10 no K<sub>a</sub>.</li>
+      <li>Se K<sub>a</sub> = <span class="var">a</span> × 10<sup>−<span class="var">n</span></sup>, então pK<sub>a</sub> = <span class="var">n</span> − log <span class="var">a</span> (mesmo truque do pH, tópico 3.9).</li>
+    </ul>
+  </div>
+  <div class="tw">
+    <table class="mid">
+      <caption>Os ácidos calculados nesta aula (usando log 8,3 ≈ 0,92 e log 1,4 ≈ 0,15)</caption>
+      <thead><tr><th scope="col">Ácido</th><th scope="col">K<sub>a</sub></th><th scope="col">pK<sub>a</sub></th></tr></thead>
+      <tbody>
+        <tr><td>HF (Exemplo 1)</td><td class="math">8,3 × 10<sup>−4</sup></td><td class="math">4 − 0,92 ≈ 3,08</td></tr>
+        <tr><td>HX do exercício (α = 3,7%)</td><td class="math">1,4 × 10<sup>−4</sup></td><td class="math">4 − 0,15 ≈ 3,85</td></tr>
+        <tr><td>acético (exercício com α = 1%)</td><td class="math">1 × 10<sup>−5</sup></td><td class="math">5</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Do mais forte para o mais fraco: HF &gt; HX &gt; acético — K<sub>a</sub> diminuindo, pK<sub>a</sub> aumentando.</p>
+  <div class="box k-trap" role="note">
+    <span class="box-t">Pegadinha</span>
+    <p>Com K<sub>a</sub>, “maior = mais forte”; com pK<sub>a</sub>, é o contrário. Antes de ordenar ácidos, olhe qual das duas grandezas a tabela da questão traz.</p>
+  </div>
+
+  <!-- 3.8 -->
+  <h4 class="topic" id="t8-kw"><span class="n">3.8</span> Produto iônico da água (K<sub>w</sub>)</h4>
+  <div class="nb">
+    <span class="nb-t">No seu caderno</span>
+    <p>“A água, quando pura ou quando usada como solvente, ioniza-se em uma extensão muito pequena, originando o equilíbrio:”</p>
+    <p class="math">H<sub>2</sub>O(l) + H<sub>2</sub>O(l) ⇌ H<sub>3</sub>O<sup>+</sup>(aq) + OH<sup>−</sup>(aq) &nbsp;&nbsp; K<sub>w</sub> = [H<sub>3</sub>O<sup>+</sup>] · [OH<sup>−</sup>]</p>
+    <p class="math">H<sub>2</sub>O(l) ⇌ H<sup>+</sup>(aq) + OH<sup>−</sup>(aq) &nbsp;&nbsp; K<sub>w</sub> = [H<sup>+</sup>] · [OH<sup>−</sup>] = 1 × 10<sup>−14</sup></p>
+    <p class="muted"><small>Na equação simplificada, o “H<sub>2</sub>O” escrito sobre a seta indica que o processo ocorre em meio aquoso; o valor 1 × 10<sup>−14</sup> aparece circulado.</small></p>
+  </div>
+  <p><strong>O que acontece.</strong> Uma molécula de água entrega um H<sup>+</sup> a outra: é a <strong>autoionização</strong> da água. A segunda equação é a forma simplificada (H<sup>+</sup> no lugar de H<sub>3</sub>O<sup>+</sup>). A expressão de K<sub>w</sub> não tem denominador porque a água, líquida e solvente, não entra (tópico <a href="#t1-ionizacao">3.1</a>) — sobra só o <em>produto</em> das concentrações dos íons, daí o nome.</p>
+  <div class="box k-com" role="note">
+    <span class="box-t">Complemento para melhor compreensão</span>
+    <p>O valor K<sub>w</sub> = 1 × 10<sup>−14</sup> vale a <strong>25 °C</strong>. O caderno não menciona a temperatura, mas ela importa (veja mais abaixo).</p>
+  </div>
+  <h5 class="mini">Consequência 1 — água pura</h5>
+  <p>Cada molécula que se ioniza gera um H<sup>+</sup> e um OH<sup>−</sup>, então [H<sup>+</sup>] = [OH<sup>−</sup>]. Substituindo em K<sub>w</sub>: [H<sup>+</sup>]² = 10<sup>−14</sup> → <strong>[H<sup>+</sup>] = [OH<sup>−</sup>] = 10<sup>−7</sup> mol/L</strong> a 25 °C.</p>
+  <p><strong>Quão pequena é essa “extensão muito pequena”?</strong> São 10<sup>−7</sup> mol/L de íons para cerca de 55,5 mol/L de moléculas de água: 10<sup>−7</sup> ÷ 55,5 ≈ 1,8 × 10<sup>−9</sup>. Ou seja, mais ou menos 2 moléculas em cada 1 bilhão estão ionizadas a cada instante.</p>
+  <h5 class="mini">Consequência 2 — qualquer solução aquosa</h5>
+  <p>A 25 °C, o produto [H<sup>+</sup>] · [OH<sup>−</sup>] vale 10<sup>−14</sup> em <em>qualquer</em> solução aquosa, não só na água pura. Ao dissolver um ácido, [H<sup>+</sup>] aumenta; o equilíbrio da água se desloca para a esquerda e consome OH<sup>−</sup>, até o produto voltar a 10<sup>−14</sup>.</p>
+  <div class="fdisp"><span class="pt">[H<sup>+</sup>] = 10<sup>−3</sup> mol/L</span> <span class="pt"><span class="ar">→</span>[OH<sup>−</sup>] = <span class="frac"><span>10<sup>−14</sup></span><span>10<sup>−3</sup></span></span> = 10<sup>−11</sup> mol/L</span></div>
+  <p>Mesmo numa solução ácida existe OH<sup>−</sup> — só que muito pouco.</p>
+  <div class="box k-com" role="note">
+    <span class="box-t">Complemento — K<sub>w</sub> muda com a temperatura</span>
+    <div class="tw">
+      <table class="mid">
+        <thead><tr><th scope="col">Temperatura</th><th scope="col">K<sub>w</sub></th><th scope="col">pH da água pura (neutra)</th></tr></thead>
+        <tbody>
+          <tr><td>0 °C</td><td class="math">0,114 × 10<sup>−14</sup></td><td>7,47</td></tr>
+          <tr><td>25 °C</td><td class="math">1,008 × 10<sup>−14</sup></td><td>7,00</td></tr>
+          <tr><td>50 °C</td><td class="math">5,476 × 10<sup>−14</sup></td><td>6,63</td></tr>
+          <tr><td>100 °C</td><td class="math">51,3 × 10<sup>−14</sup></td><td>6,14</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>K<sub>w</sub> aumenta com o aquecimento, o que mostra que a autoionização da água é <strong>endotérmica</strong> (Le Chatelier: aquecer favorece o sentido que absorve calor). A 100 °C, a água pura tem pH 6,14 e continua <strong>neutra</strong>, porque [H<sup>+</sup>] = [OH<sup>−</sup>]. Conclusão: “neutro = pH 7” só vale a 25 °C; o critério geral de neutralidade é [H<sup>+</sup>] = [OH<sup>−</sup>]. <small class="muted">Fonte da tabela: <a href="https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_Theoretical_Chemistry)/Equilibria/Acid-Base_Equilibria/3._The_Ionic_Product_for_Water" target="_blank" rel="noopener">LibreTexts — The Ionic Product for Water</a>.</small></p>
+  </div>
+
+  <!-- 3.9 -->
+  <h4 class="topic" id="t9-ph"><span class="n">3.9</span> pH: definição, cálculo e escala</h4>
+  <div class="box k-def" role="note">
+    <span class="box-t">Definição (caderno)</span>
+    <div class="fdisp big">pH = −log [H<sup>+</sup>]</div>
+    <p class="cond">[H<sup>+</sup>] em mol/L. O log “comprime” concentrações que vão de cerca de 1 a 10<sup>−14</sup> mol/L numa escala de 0 a 14; o sinal de menos deixa os números positivos.</p>
+  </div>
+  <h5 class="mini">Caso 1 — [H<sup>+</sup>] é uma potência de 10 exata</h5>
+  <p>Se [H<sup>+</sup>] = 10<sup>−<span class="var">n</span></sup>, então pH = <span class="var">n</span>. No caderno:</p>
+  <div class="fdisp">pH = −log 10<sup>−3</sup> = −(−3 · log 10) = 3</div>
+  <h5 class="mini">Caso 2 — há um número na frente da potência</h5>
+  <p>Se [H<sup>+</sup>] = <span class="var">a</span> × 10<sup>−<span class="var">n</span></sup>, use log(<span class="var">a</span>·<span class="var">b</span>) = log <span class="var">a</span> + log <span class="var">b</span>. Resultado prático: <strong>pH = <span class="var">n</span> − log <span class="var">a</span></strong>. Exemplo do caderno, [H<sup>+</sup>] = 2 × 10<sup>−3</sup> mol/L:</p>
+  <div class="fdisp">pH = −log(2 × 10<sup>−3</sup>) = −(log 2 + log 10<sup>−3</sup>) = −(0,3 − 3) = −(−2,7) = <strong>2,7</strong></div>
+  <div class="box k-fix" role="note">
+    <span class="box-t">Correção necessária</span>
+    <p>O caderno terminou em “(0,3 − 3) = −2,7”. Esse −2,7 é o valor de log[H<sup>+</sup>]; falta aplicar o sinal de menos da definição: <strong>pH = −(−2,7) = 2,7</strong>.</p>
+  </div>
+  <div class="box k-def" role="note">
+    <span class="box-t">Como conferir em 5 segundos</span>
+    <p>2 × 10<sup>−3</sup> está entre 10<sup>−3</sup> (pH 3) e 10<sup>−2</sup> (pH 2), então o pH tem de ficar entre 2 e 3. Como há um pouco mais de H<sup>+</sup> que 10<sup>−3</sup>, o pH fica um pouco abaixo de 3: 2,7 ✓. Um pH negativo exigiria [H<sup>+</sup>] maior que 1 mol/L.</p>
+  </div>
+  <h5 class="mini">A escala (como no caderno)</h5>
+  <ul>
+    <li><strong>[H<sup>+</sup>] &gt; [OH<sup>−</sup>] → meio ácido</strong> → pH &lt; 7 (a 25 °C)</li>
+    <li><strong>[H<sup>+</sup>] = [OH<sup>−</sup>] → meio neutro</strong> → pH = 7 (a 25 °C)</li>
+    <li><strong>[H<sup>+</sup>] &lt; [OH<sup>−</sup>] → meio básico</strong> → pH &gt; 7 (a 25 °C)</li>
+  </ul>
+  <p>A anotação circulada “pH → [H<sup>+</sup>]” lembra que o pH é sempre calculado a partir da concentração de H<sup>+</sup>. Duas relações decidem questões:</p>
+  <ul>
+    <li><strong>Relação inversa:</strong> mais H<sup>+</sup> → pH menor.</li>
+    <li><strong>Escala logarítmica:</strong> cada unidade de pH é um fator 10 em [H<sup>+</sup>]. Uma solução de pH 3 tem 10 vezes mais H<sup>+</sup> que uma de pH 4 e 100 vezes mais que uma de pH 5.</li>
+  </ul>
+  <figure class="fig" id="fig-ph">
+    <div class="fig-scroll">
+      <svg viewBox="0 0 720 214" role="img" aria-labelledby="fig-ph-t fig-ph-d" style="min-width:640px">
+        <title id="fig-ph-t">Escala de pH a 25 °C com os exemplos da aula</title>
+        <desc id="fig-ph-d">Barra de 0 a 14. À esquerda de 7, meio ácido; em 7, neutro; à direita, básico. Marcadores: 1 em pH 2, 2 em pH 2,7, 3 em pH 3, 4 em pH 7 e 5 em pH 11.</desc>
+        <defs>
+          <linearGradient id="phg" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stop-color="#b91c1c"/><stop offset=".15" stop-color="#ea580c"/><stop offset=".3" stop-color="#eab308"/><stop offset=".5" stop-color="#16a34a"/><stop offset=".7" stop-color="#0d9488"/><stop offset=".85" stop-color="#2563eb"/><stop offset="1" stop-color="#6d28d9"/>
+          </linearGradient>
+        </defs>
+        <text class="t3" x="680" y="18" font-size="12" text-anchor="end">círculos: exemplos desta aula (legenda abaixo)</text>
+        <g class="ln" stroke-width="1.3">
+          <line x1="131.43" y1="60" x2="131.43" y2="72"/>
+          <line x1="163.43" y1="60" x2="163.43" y2="72"/>
+          <line x1="177.14" y1="34" x2="177.14" y2="72"/>
+          <line x1="360" y1="60" x2="360" y2="72"/>
+          <line x1="542.86" y1="60" x2="542.86" y2="72"/>
+        </g>
+        <g stroke-width="1.5">
+          <circle class="mk" cx="131.43" cy="50" r="10"/>
+          <circle class="mk" cx="163.43" cy="50" r="10"/>
+          <circle class="mk" cx="177.14" cy="24" r="10"/>
+          <circle class="mk" cx="360" cy="50" r="10"/>
+          <circle class="mk" cx="542.86" cy="50" r="10"/>
+        </g>
+        <g class="t" font-size="12" font-weight="700" text-anchor="middle">
+          <text x="131.43" y="54">1</text><text x="163.43" y="54">2</text><text x="177.14" y="28">3</text><text x="360" y="54">4</text><text x="542.86" y="54">5</text>
+        </g>
+        <rect x="40" y="72" width="640" height="26" rx="6" fill="url(#phg)"/>
+        <path class="ln" stroke-width="1.2" d="M40 98v6M85.71 98v6M131.43 98v6M177.14 98v6M222.86 98v6M268.57 98v6M314.29 98v6M360 98v6M405.71 98v6M451.43 98v6M497.14 98v6M542.86 98v6M588.57 98v6M634.29 98v6M680 98v6"/>
+        <g class="t2" font-size="13" text-anchor="middle">
+          <text x="40" y="120">0</text><text x="85.71" y="120">1</text><text x="131.43" y="120">2</text><text x="177.14" y="120">3</text><text x="222.86" y="120">4</text><text x="268.57" y="120">5</text><text x="314.29" y="120">6</text><text x="360" y="120" font-weight="700">7</text><text x="405.71" y="120">8</text><text x="451.43" y="120">9</text><text x="497.14" y="120">10</text><text x="542.86" y="120">11</text><text x="588.57" y="120">12</text><text x="634.29" y="120">13</text><text x="680" y="120">14</text>
+        </g>
+        <g class="t3" font-size="12.5">
+          <text x="40" y="141">[H⁺] = 1 mol/L</text>
+          <text x="360" y="141" text-anchor="middle">[H⁺] = 10⁻⁷</text>
+          <text x="680" y="141" text-anchor="end">[H⁺] = 10⁻¹⁴</text>
+        </g>
+        <text x="177.14" y="166" font-size="13" font-weight="700" text-anchor="middle" style="fill:var(--fix-bd)">ÁCIDO: [H⁺] &gt; [OH⁻]</text>
+        <text x="542.86" y="166" font-size="13" font-weight="700" text-anchor="middle" style="fill:var(--com-bd)">BÁSICO: [H⁺] &lt; [OH⁻]</text>
+        <text x="360" y="188" font-size="13" font-weight="700" text-anchor="middle" style="fill:var(--ex-bd)">NEUTRO (25 °C): [H⁺] = [OH⁻]</text>
+        <text class="t3" x="40" y="208" font-size="12">← mais ácido (mais H⁺)</text>
+        <text class="t3" x="680" y="208" font-size="12" text-anchor="end">mais básico (menos H⁺) →</text>
+      </svg>
+    </div>
+    <figcaption>
+      <strong>Escala de pH a 25 °C.</strong> Cada divisão corresponde a um fator 10 em [H<sup>+</sup>].
+      <ol>
+        <li>HCl 0,01 mol/L → [H<sup>+</sup>] = 10<sup>−2</sup> → pH 2 <span class="muted">(complemento, tópico 3.10)</span></li>
+        <li>[H<sup>+</sup>] = 2 × 10<sup>−3</sup> mol/L → pH 2,7 (exemplo do caderno)</li>
+        <li>Ácido acético 0,1 mol/L com α = 1% → pH 3 (caderno)</li>
+        <li>Água pura a 25 °C → pH 7</li>
+        <li>Base XOH 0,1 mol/L com α = 1% → pOH 3 → pH 11 <span class="muted">(complemento, logo abaixo)</span></li>
+      </ol>
+    </figcaption>
+  </figure>
+  <div class="box k-com" role="note">
+    <span class="box-t">Complemento — pOH e a relação pH + pOH = 14</span>
+    <p>Por analogia, <strong>pOH = −log[OH<sup>−</sup>]</strong>. Aplicando −log aos dois lados de [H<sup>+</sup>] · [OH<sup>−</sup>] = 10<sup>−14</sup>:</p>
+    <div class="fdisp"><span class="pt">−log[H<sup>+</sup>] + (−log[OH<sup>−</sup>]) = −log 10<sup>−14</sup></span> <span class="pt"><span class="ar">→</span><strong>pH + pOH = 14</strong> (25 °C)</span></div>
+    <p>Exemplo com uma base: XOH 0,1 mol/L com α = 1% → [OH<sup>−</sup>] = α·<span class="var">m</span> = 10<sup>−3</sup> mol/L → pOH = 3 → pH = 14 − 3 = 11. Conferência pelo outro lado: na solução ácida de pH 3 do tópico 3.8, [OH<sup>−</sup>] = 10<sup>−11</sup> → pOH = 11, e 3 + 11 = 14 ✓.</p>
+  </div>
+
+  <!-- 3.10 -->
+  <h4 class="topic" id="t10-ph-fraco"><span class="n">3.10</span> pH de um ácido fraco: dois caminhos</h4>
+  <p>A última página do caderno calcula o pH do ácido acético 0,1 mol/L de duas maneiras. Os dois caminhos chegam ao mesmo número; o que muda é o dado de partida.</p>
+  <h5 class="mini">Caminho 1 — o exercício dá α (regra de três)</h5>
+  <div class="fdisp"><span class="pt">0,1 mol/L ——— 100%</span> <span class="sep">;</span> <span class="pt"><span class="var">x</span> ——— 1%</span> <span class="pt"><span class="ar">→</span><span class="var">x</span> = 1 × 10<sup>−3</sup> mol/L = [H<sup>+</sup>]</span> <span class="pt"><span class="ar">→</span>pH = 3</span></div>
+  <h5 class="mini">Caminho 2 — o exercício dá K<sub>a</sub> (tabela com <span class="var">x</span>)</h5>
+  <div class="tw">
+    <table class="ice">
+      <caption>R: CH<sub>3</sub>COOH(aq) ⇌ CH<sub>3</sub>COO<sup>−</sup>(aq) + H<sup>+</sup>(aq) &nbsp;·&nbsp; K<sub>a</sub> = 1&nbsp;×&nbsp;10<sup>−5</sup></caption>
+      <thead><tr><th scope="col"></th><th scope="col">CH<sub>3</sub>COOH</th><th scope="col">CH<sub>3</sub>COO<sup>−</sup></th><th scope="col">H<sup>+</sup></th></tr></thead>
+      <tbody>
+        <tr><th scope="row">I</th><td>0,1</td><td>0</td><td>0</td></tr>
+        <tr><th scope="row">R/F</th><td>− <span class="var">x</span></td><td>+ <span class="var">x</span></td><td>+ <span class="var">x</span></td></tr>
+        <tr class="r-e"><th scope="row">E</th><td>0,1 − <span class="var">x</span> ≈ 0,1</td><td><span class="var">x</span></td><td><span class="var">x</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="fdisp"><span class="pt">K<sub>a</sub> = <span class="frac"><span>[CH<sub>3</sub>COO<sup>−</sup>] · [H<sup>+</sup>]</span><span>[CH<sub>3</sub>COOH]</span></span></span> <span class="pt"><span class="ar">→</span>10<sup>−5</sup> = <span class="frac"><span><span class="var">x</span>²</span><span>10<sup>−1</sup></span></span></span> <span class="pt"><span class="ar">→</span><span class="var">x</span>² = 10<sup>−6</sup></span> <span class="pt"><span class="ar">→</span><span class="var">x</span> = 1 × 10<sup>−3</sup> mol/L</span></div>
+  <p>Como <span class="var">x</span> = [H<sup>+</sup>] (a seta que você desenhou do <span class="var">x</span> circulado até o pH), pH = −log 10<sup>−3</sup> = 3. O mesmo resultado do caminho 1, como devia ser.</p>
+  <div class="nb">
+    <span class="nb-t">As duas notas do caderno nessa página</span>
+    <p><strong>Em verde, sob o “≈ 0,1 mol/L”:</strong> “Só pode fazer isso se for ácido fraco.”</p>
+    <p><strong>Em vermelho, na margem:</strong> “Usar a tabela somente quando o α não for dado pelo exercício.”</p>
+  </div>
+  <div class="box k-int" role="note">
+    <span class="box-t">Atenção à interpretação</span>
+    <p>A tabela sempre funciona — é o método geral. A nota vermelha quer dizer que, <strong>quando α é dado</strong>, você não precisa descobrir <span class="var">x</span>: a regra de três entrega [H<sup>+</sup>] na hora. A tabela com a incógnita <span class="var">x</span> é necessária quando o exercício dá K<sub>a</sub> e não dá α.</p>
+    <p>A nota verde está certa e tem um teste objetivo: depois de achar <span class="var">x</span>, calcule α = <span class="var">x</span> ÷ <span class="var">m</span> = 10<sup>−3</sup> ÷ 0,1 = 1% ≤ 5% ✓. <span class="muted">(Sem aproximar, resolvendo a equação do 2º grau, <span class="var">x</span> = 9,95 × 10<sup>−4</sup> e pH = 3,00 — a aproximação não muda nada.)</span></p>
+  </div>
+  <div class="box k-fix" role="note">
+    <span class="box-t">Correção necessária</span>
+    <p>Na página do pK<sub>a</sub>, a ionização aparece como “CH<sub>3</sub>COOH ⇌ H<sub>3</sub>COO<sup>−</sup> + H<sup>+</sup>”. O ânion é <strong>CH<sub>3</sub>COO<sup>−</sup></strong> (acetato): ele conserva todos os átomos do ácido, menos o H<sup>+</sup> ionizável. Na página da tabela, você escreveu corretamente. As anotações “100%” sob o ácido e “1%” sob os íons, nessa mesma linha, são o α: de 100% dissolvido, 1% ionizou.</p>
+  </div>
+  <div class="box k-com" role="note">
+    <span class="box-t">Complemento — atalho para vestibular</span>
+    <p>Da linha E da tabela: K<sub>a</sub> ≈ <span class="var">x</span>²/<span class="var">m</span>, logo</p>
+    <div class="fdisp"><span class="pt">[H<sup>+</sup>] ≈ √(K<sub>a</sub> · <span class="var">m</span>)</span> <span class="pt"><span class="ar">→</span>√(10<sup>−5</sup> · 10<sup>−1</sup>) = √(10<sup>−6</sup>) = 10<sup>−3</sup> mol/L ✓</span></div>
+    <p><strong>Condições:</strong> monoácido fraco e α pequeno — confira sempre α = [H<sup>+</sup>] ÷ <span class="var">m</span> ≤ 5%. O atalho não substitui entender a tabela: é a mesma conta, resumida.</p>
+  </div>
+  <div class="box k-ex" role="note">
+    <span class="box-t">Exemplo intermediário (complemento) — juntando K<sub>a</sub> e log</span>
+    <p>Ácido HA 0,1 mol/L com K<sub>a</sub> = 4 × 10<sup>−5</sup>. Qual é o pH?</p>
+    <ol class="steps">
+      <li><span class="var">x</span>² = K<sub>a</sub> · <span class="var">m</span> = 4 × 10<sup>−5</sup> · 10<sup>−1</sup> = 4 × 10<sup>−6</sup> → <span class="var">x</span> = 2 × 10<sup>−3</sup> mol/L (raiz de 4 é 2; raiz de 10<sup>−6</sup> é 10<sup>−3</sup>).</li>
+      <li>Conferência: α = 2 × 10<sup>−3</sup> ÷ 0,1 = 2% ≤ 5% ✓.</li>
+      <li>pH = −log(2 × 10<sup>−3</sup>) = 3 − 0,3 = <strong>2,7</strong> — o mesmo [H<sup>+</sup>] do exemplo do caderno no tópico 3.9.</li>
+    </ol>
+  </div>
+  <div class="box k-com" role="note">
+    <span class="box-t">Complemento — o contraste com um ácido forte</span>
+    <p>HCl 0,01 mol/L: α ≈ 100%, então [H<sup>+</sup>] = 0,01 = 10<sup>−2</sup> mol/L e pH = 2 — sem tabela. Repare: esse HCl é 10 vezes <em>mais diluído</em> que o ácido acético 0,1 mol/L e, mesmo assim, é <em>mais ácido</em> (pH 2 contra pH 3), porque ioniza quase tudo enquanto o acético ioniza 1%. <strong>Forte não é o mesmo que concentrado.</strong></p>
+  </div>
+  <div class="box k-com" role="note">
+    <span class="box-t">Complemento — o caminho inverso, comum em exercícios</span>
+    <p>Um ácido HA 0,1 mol/L tem pH = 3. Calcule α e K<sub>a</sub>.</p>
+    <p>[H<sup>+</sup>] = 10<sup>−3</sup> mol/L → α = 10<sup>−3</sup> ÷ 0,1 = 10<sup>−2</sup> = 1% → K<sub>a</sub> ≈ α² · <span class="var">m</span> = 10<sup>−4</sup> · 10<sup>−1</sup> = 1 × 10<sup>−5</sup>. É o ácido acético do caderno, percorrido de trás para frente.</p>
+  </div>
+  <figure class="flow" id="fig-fluxo" aria-labelledby="fig-fluxo-c">
+    <div class="flow-start">O que o enunciado forneceu?</div>
+    <div class="flow-down" aria-hidden="true">↓</div>
+    <div class="flow-grid">
+      <div class="flow-card" style="--bd:var(--accent)">
+        <p class="if">Deu α e <span class="var">m</span></p>
+        <p class="then">[H<sup>+</sup>] = α · <span class="var">m</span> (regra de três)</p>
+        <ol><li>pH = −log[H<sup>+</sup>]</li><li>Se pedir K<sub>a</sub>: Ostwald — simplifique só se α ≤ 5%</li></ol>
+      </div>
+      <div class="flow-card" style="--bd:var(--for-bd)">
+        <p class="if">Deu K<sub>a</sub> e <span class="var">m</span> (ácido fraco)</p>
+        <p class="then">Tabela com <span class="var">x</span></p>
+        <ol><li>K<sub>a</sub> = <span class="var">x</span>² ÷ (<span class="var">m</span> − <span class="var">x</span>) ≈ <span class="var">x</span>² ÷ <span class="var">m</span></li><li><span class="var">x</span> = [H<sup>+</sup>] ≈ √(K<sub>a</sub> · <span class="var">m</span>)</li><li>Confira: α = <span class="var">x</span> ÷ <span class="var">m</span> ≤ 5%</li><li>pH = −log <span class="var">x</span></li></ol>
+      </div>
+      <div class="flow-card" style="--bd:var(--fix-bd)">
+        <p class="if">Ácido forte (HCl…) e <span class="var">m</span></p>
+        <p class="then">[H<sup>+</sup>] = <span class="var">m</span></p>
+        <ol><li>α ≈ 100%: não precisa de tabela</li><li>pH = −log <span class="var">m</span></li></ol>
+      </div>
+      <div class="flow-card" style="--bd:var(--kit)">
+        <p class="if">Deu o pH (e <span class="var">m</span>)</p>
+        <p class="then">Caminho inverso</p>
+        <ol><li>[H<sup>+</sup>] = 10<sup>−pH</sup></li><li>α = [H<sup>+</sup>] ÷ <span class="var">m</span></li><li>K<sub>a</sub> por Ostwald</li></ol>
+      </div>
+    </div>
+    <figcaption id="fig-fluxo-c">Fluxograma de decisão para monoácidos (um H ionizável). Os dois primeiros caminhos estão no caderno; os dois últimos são complementos.</figcaption>
+  </figure>
+
+  <!-- ========== 4. EXEMPLOS E ANALOGIAS ========== -->
+  <h3 class="sec" id="exemplos"><span class="n">4</span> Exemplos e analogias</h3>
+  <p>Os exemplos do caderno já foram resolvidos no tópico 3. Aqui ficam dois exemplos novos (identificados como complemento) e analogias que ajudam a fixar as ideias — cada uma com o seu limite.</p>
+  <div class="box k-ex" role="note">
+    <span class="box-t">Exemplo simples (complemento)</span>
+    <p>Um monoácido HA 0,2 mol/L tem α = 2%. Calcule [H<sup>+</sup>], K<sub>a</sub> e pH. Dado: log 2 = 0,3.</p>
+    <ol class="steps">
+      <li><strong>[H<sup>+</sup>]</strong> (regra de três): 0,2 ——— 100%; <span class="var">x</span> ——— 2% → <span class="var">x</span> = 0,2 × 0,02 = 4 × 10<sup>−3</sup> mol/L.</li>
+      <li><strong>K<sub>a</sub>:</strong> α = 2% ≤ 5%, então K<sub>a</sub> ≈ α² · <span class="var">m</span> = (0,02)² · 0,2 = 4 × 10<sup>−4</sup> · 0,2 = 8 × 10<sup>−5</sup> <span class="muted">(fórmula completa: 8,2 × 10<sup>−5</sup>)</span>.</li>
+      <li><strong>pH</strong> = −log(4 × 10<sup>−3</sup>) = 3 − log 4. Como log 4 = log 2² = 2 · 0,3 = 0,6, pH = 3 − 0,6 = <strong>2,4</strong>. Faixa esperada: entre 2 e 3 ✓.</li>
+    </ol>
+  </div>
+  <div class="box k-ex" role="note">
+    <span class="box-t">Exemplo de aplicação — nível vestibular (complemento)</span>
+    <p>Solução I: HCl 0,001 mol/L. Solução II: ácido acético 0,1 mol/L (K<sub>a</sub> = 10<sup>−5</sup>). Volumes iguais. (a) Compare os pH. (b) Com alumínio em excesso, qual solução libera mais H<sub>2</sub> no total?</p>
+    <ol class="steps">
+      <li><strong>(a)</strong> I: ácido forte → [H<sup>+</sup>] = 10<sup>−3</sup> → pH 3. II: [H<sup>+</sup>] ≈ √(10<sup>−5</sup> · 10<sup>−1</sup>) = 10<sup>−3</sup> → pH 3. <strong>O mesmo pH.</strong></li>
+      <li><strong>(b)</strong> A solução II tem 100 vezes mais ácido em mol (0,1 contra 0,001 mol/L, no mesmo volume). Como todo o ácido acaba reagindo (tópico 3.4), ela libera <strong>100 vezes mais H<sub>2</sub></strong>.</li>
+      <li><strong>Moral:</strong> o pH mede só o H<sup>+</sup> livre naquele instante, não a quantidade total de ácido disponível para reagir.</li>
+    </ol>
+  </div>
+  <h4 class="mini">Analogias — o que esclarecem e onde falham</h4>
+  <div class="tw">
+    <table class="wide">
+      <thead><tr><th scope="col">Analogia</th><th scope="col">O que ela esclarece</th><th scope="col">Onde ela falha</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Pista de dança.</strong> Numa festa de 100 pessoas, a cada instante 1 está na pista. Quem dança muda o tempo todo, mas a fração na pista fica a mesma.</td><td>α = 1% e o <em>equilíbrio dinâmico</em>: moléculas se ionizam e se refazem sem parar, mas a fração ionizada é constante.</td><td>Não explica por que diluir aumenta α — isso vem da matemática do K<sub>a</sub> (Ostwald).</td></tr>
+        <tr><td><strong>Personalidade × comportamento.</strong> K<sub>a</sub> é a “personalidade” do ácido; α é como ele se comporta numa situação.</td><td>K<sub>a</sub> é característico do ácido; α depende da concentração da solução.</td><td>A “personalidade” muda com a temperatura: K<sub>a</sub> só é constante a temperatura fixa.</td></tr>
+        <tr><td><strong>Gangorra.</strong> [H<sup>+</sup>] e [OH<sup>−</sup>] nas pontas: quando um sobe, o outro desce.</td><td>Por que acidificar a água diminui [OH<sup>−</sup>] (K<sub>w</sub> fixo).</td><td>É um <em>produto</em> fixo, não uma soma: [H<sup>+</sup>] 1000 vezes maior → [OH<sup>−</sup>] 1000 vezes menor, não “1000 a menos”.</td></tr>
+        <tr><td><strong>Balde × caixa d’água.</strong> O HCl é um balde já cheio de H<sup>+</sup> livre; o acético é uma caixa grande com torneira estreita, que vai repondo o que sai.</td><td>Mesma água no total, vazões diferentes: velocidade × quantidade de H<sub>2</sub> (tópico 3.4).</td><td>Não existe reservatório separado: a “reposição” é o deslocamento do equilíbrio. E a velocidade também depende de temperatura e superfície do metal.</td></tr>
+        <tr><td><strong>Degraus de 10.</strong> Cada degrau da escala de pH multiplica ou divide [H<sup>+</sup>] por 10.</td><td>De pH 3 para pH 5 são dois degraus: 100 vezes menos H<sup>+</sup>.</td><td>A escala é “invertida” (número menor = mais ácido) e pode sair de 0–14 em soluções muito concentradas.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========== 5. ESQUEMAS ========== -->
+  <h3 class="sec" id="esquemas"><span class="n">5</span> Esquemas e representações visuais</h3>
+  <p>O mapa abaixo reúne a aula inteira numa só imagem. Outros três esquemas estão nos tópicos em que são usados: o <a href="#fig-h2">gráfico volume de H<sub>2</sub> × tempo</a> (3.4), a <a href="#fig-ph">escala de pH</a> (3.9) e o <a href="#fig-fluxo">fluxograma de decisão</a> (3.10).</p>
+  <figure class="fig" id="fig-mapa">
+    <div class="fig-scroll">
+      <svg viewBox="0 0 720 436" role="img" aria-labelledby="fig-mapa-t fig-mapa-d">
+        <title id="fig-mapa-t">Mapa de relações do equilíbrio iônico</title>
+        <desc id="fig-mapa-d">O ácido HX em água leva a duas grandezas: alfa, quanto ionizou, e Ka, a tendência do ácido. A Lei de Ostwald liga alfa e Ka. Multiplicando alfa por m obtém-se [H+]; a tabela com x leva de Ka a [H+]. De [H+] obtém-se o pH por menos log, e [OH-] pelo Kw.</desc>
+        <defs>
+          <marker id="mah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink-3)"/></marker>
+        </defs>
+        <g class="ln" stroke-width="1.6">
+          <line x1="300" y1="70" x2="198" y2="109" marker-end="url(#mah)"/>
+          <line x1="420" y1="70" x2="522" y2="109" marker-end="url(#mah)"/>
+          <line x1="274" y1="144" x2="446" y2="144" marker-start="url(#mah)" marker-end="url(#mah)"/>
+          <line x1="150" y1="176" x2="288" y2="247" marker-end="url(#mah)"/>
+          <line x1="570" y1="176" x2="432" y2="247" marker-end="url(#mah)"/>
+          <line x1="310" y1="306" x2="234" y2="357" marker-end="url(#mah)"/>
+          <line x1="410" y1="306" x2="486" y2="349" marker-end="url(#mah)"/>
+        </g>
+        <g class="t3" font-size="12.5">
+          <text x="226" y="86" text-anchor="end">quanto ionizou?</text>
+          <text x="494" y="86">com que tendência?</text>
+          <text x="206" y="226" text-anchor="end">× <tspan font-style="italic">m</tspan></text>
+          <text x="206" y="242" text-anchor="end">(regra de três)</text>
+          <text x="514" y="226">tabela com <tspan font-style="italic">x</tspan></text>
+          <text x="514" y="242">[H⁺] ≈ √(K<tspan dy="4" font-size="10">a</tspan><tspan dy="-4">·</tspan><tspan font-style="italic">m</tspan>)</text>
+          <text x="284" y="345">−log</text>
+          <text x="462" y="322">K<tspan dy="4" font-size="10">w</tspan></text>
+        </g>
+        <text x="360" y="135" font-size="13.5" font-weight="700" text-anchor="middle" class="acc">Lei de Ostwald</text>
+        <text class="t" x="360" y="164" font-size="13" text-anchor="middle">K<tspan dy="4" font-size="10">a</tspan><tspan dy="-4"> = α²·</tspan><tspan font-style="italic">m</tspan> ÷ (1 − α)</text>
+        <text class="t3" x="360" y="182" font-size="12" text-anchor="middle">≈ α²·<tspan font-style="italic">m</tspan> se α ≤ 5%</text>
+
+        <rect class="node-a" x="250" y="14" width="220" height="56" rx="12" stroke-width="1.5"/>
+        <text class="t" x="360" y="37" font-size="15" font-weight="700" text-anchor="middle">Ácido HX em água</text>
+        <text class="t2" x="360" y="57" font-size="13" text-anchor="middle">concentração inicial <tspan font-style="italic">m</tspan></text>
+
+        <rect class="node" x="20" y="112" width="252" height="64" rx="12" stroke-width="1.5"/>
+        <text class="t" x="146" y="134" font-size="15" font-weight="700" text-anchor="middle">α — grau de ionização</text>
+        <text class="t2" x="146" y="152" font-size="12.5" text-anchor="middle">quanto ionizou nesta solução</text>
+        <text class="t3" x="146" y="168" font-size="12.5" text-anchor="middle">(muda com <tspan font-style="italic">m</tspan> e com T)</text>
+
+        <rect class="node" x="448" y="112" width="252" height="64" rx="12" stroke-width="1.5"/>
+        <text class="t" x="574" y="134" font-size="15" font-weight="700" text-anchor="middle">K<tspan dy="4" font-size="11">a</tspan><tspan dy="-4"> — constante de ionização</tspan></text>
+        <text class="t2" x="574" y="152" font-size="12.5" text-anchor="middle">tendência do ácido (só muda com T)</text>
+        <text class="t3" x="574" y="168" font-size="12.5" text-anchor="middle">pK<tspan dy="4" font-size="10">a</tspan><tspan dy="-4"> = −log K</tspan><tspan dy="4" font-size="10">a</tspan></text>
+
+        <rect class="node-a" x="235" y="250" width="250" height="56" rx="12" stroke-width="1.5"/>
+        <text class="t" x="360" y="273" font-size="15" font-weight="700" text-anchor="middle">[H⁺] = [X⁻] = α·<tspan font-style="italic">m</tspan></text>
+        <text class="t2" x="360" y="293" font-size="12.5" text-anchor="middle">H⁺ livre na solução</text>
+
+        <rect class="node-a" x="60" y="360" width="250" height="56" rx="12" stroke-width="1.5"/>
+        <text class="t" x="185" y="383" font-size="15" font-weight="700" text-anchor="middle">pH = −log[H⁺]</text>
+        <text class="t2" x="185" y="403" font-size="12.5" text-anchor="middle">ácido &lt; 7 &lt; básico (25 °C)</text>
+
+        <rect class="node" x="410" y="352" width="290" height="72" rx="12" stroke-width="1.5"/>
+        <text class="t" x="555" y="374" font-size="15" font-weight="700" text-anchor="middle">[OH⁻] = K<tspan dy="4" font-size="11">w</tspan><tspan dy="-4"> ÷ [H⁺]</tspan></text>
+        <text class="t2" x="555" y="394" font-size="12.5" text-anchor="middle">K<tspan dy="4" font-size="10">w</tspan><tspan dy="-4"> = 10⁻¹⁴ a 25 °C</tspan></text>
+        <text class="t3" x="555" y="412" font-size="12.5" text-anchor="middle">pOH = −log[OH⁻] · pH + pOH = 14</text>
+      </svg>
+    </div>
+    <figcaption><strong>Mapa de relações.</strong> As duas grandezas centrais (α e K<sub>a</sub>) são ligadas pela Lei de Ostwald; qualquer uma delas leva a [H<sup>+</sup>], e [H<sup>+</sup>] leva ao pH e, pelo K<sub>w</sub>, ao [OH<sup>−</sup>]. Se você consegue refazer este mapa de memória, entendeu a estrutura da matéria.</figcaption>
+  </figure>
+  <div class="tw">
+    <table class="wide">
+      <caption>Ácido forte × ácido fraco</caption>
+      <thead><tr><th scope="col"></th><th scope="col">Ácido forte (ex.: HCl)</th><th scope="col">Ácido fraco (ex.: CH<sub>3</sub>COOH)</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Grau de ionização</th><td>≈ 100% (critério do caderno: &gt; 50%)</td><td>pequeno (&lt; 50%; muitas vezes &lt; 5%)</td></tr>
+        <tr><th scope="row">Seta na equação</th><td>→ (ionização praticamente completa)</td><td>⇌ (equilíbrio)</td></tr>
+        <tr><th scope="row">O que há na solução</th><td>íons; quase nenhuma molécula intacta</td><td>muitas moléculas intactas e poucos íons</td></tr>
+        <tr><th scope="row">K<sub>a</sub></th><td>muito grande</td><td>pequeno (bem menor que 1)</td></tr>
+        <tr><th scope="row">[H<sup>+</sup>]</th><td>= <span class="var">m</span></td><td>= α·<span class="var">m</span> ≈ √(K<sub>a</sub>·<span class="var">m</span>)</td></tr>
+        <tr><th scope="row">Tabela I–R/F–E</th><td>desnecessária</td><td>necessária quando só K<sub>a</sub> é dado</td></tr>
+        <tr><th scope="row">Exemplo desta aula</th><td>HCl 0,01 mol/L → pH 2</td><td>acético 0,1 mol/L → pH 3</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========== 6. PEGADINHAS ========== -->
+  <h3 class="sec" id="pegadinhas"><span class="n">6</span> Erros frequentes e pegadinhas</h3>
+  <p>Para cada erro: por que ele parece certo e como evitá-lo.</p>
+  <ol class="pit">
+    <li><strong>Esquecer o sinal de menos no final do pH</strong> (chegar a −2,7).
+      <span class="why"><b>Por que engana:</b> log de número menor que 1 é negativo, e a conta “parece pronta” ao chegar em −2,7.</span>
+      <span class="how"><b>Como evitar:</b> estime a faixa antes (2 × 10<sup>−3</sup> está entre 10<sup>−3</sup> e 10<sup>−2</sup> → pH entre 2 e 3). pH negativo só com [H<sup>+</sup>] &gt; 1 mol/L.</span></li>
+    <li><strong>Usar α em porcentagem nas fórmulas.</strong>
+      <span class="why"><b>Por que engana:</b> o enunciado dá “3,7%”.</span>
+      <span class="how"><b>Como evitar:</b> converta para 0,037 antes de substituir. Um K<sub>a</sub> maior que 1 para ácido fraco denuncia o erro.</span></li>
+    <li><strong>Simplificar Ostwald com α grande.</strong>
+      <span class="why"><b>Por que engana:</b> K<sub>a</sub> ≈ α²·<span class="var">m</span> é a fórmula mais lembrada.</span>
+      <span class="how"><b>Como evitar:</b> só simplifique se α ≤ 5%. O HF com α = 25% exige (1 − α): 8,3 × 10<sup>−4</sup>, não 6,25 × 10<sup>−4</sup>.</span></li>
+    <li><strong>Achar que K<sub>a</sub> maior produz mais H<sub>2</sub> no total.</strong>
+      <span class="why"><b>Por que engana:</b> “ácido mais forte = reação maior”.</span>
+      <span class="how"><b>Como evitar:</b> K<sub>a</sub> controla a <em>velocidade</em> (H<sup>+</sup> livre); a <em>quantidade total</em> depende dos mols de ácido. Foi a ideia da FUVEST 2015, questão 80.</span></li>
+    <li><strong>Confundir forte com concentrado.</strong>
+      <span class="why"><b>Por que engana:</b> os dois “aumentam a acidez”.</span>
+      <span class="how"><b>Como evitar:</b> força = fração que ioniza (α, K<sub>a</sub>); concentração = quanto ácido foi dissolvido (<span class="var">m</span>). HCl 0,01 mol/L (pH 2) é mais ácido que acético 0,1 mol/L (pH 3).</span></li>
+    <li><strong>Tratar α como constante do ácido.</strong>
+      <span class="why"><b>Por que engana:</b> α aparece em tabelas de força.</span>
+      <span class="how"><b>Como evitar:</b> α muda com a concentração e com a temperatura; o que caracteriza o ácido, a uma dada temperatura, é o K<sub>a</sub>.</span></li>
+    <li><strong>Achar que diluir um ácido fraco o deixa mais ácido</strong> “porque α aumenta”.
+      <span class="why"><b>Por que engana:</b> “mais ionização = mais ácido”.</span>
+      <span class="how"><b>Como evitar:</b> α sobe, mas [H<sup>+</sup>] = α·<span class="var">m</span> cai, porque <span class="var">m</span> cai mais. O pH sobe.</span></li>
+    <li><strong>Colocar a água na expressão de K.</strong>
+      <span class="why"><b>Por que engana:</b> ela aparece na equação (HCl + H<sub>2</sub>O).</span>
+      <span class="how"><b>Como evitar:</b> solvente e líquidos puros não entram. É por isso que K<sub>w</sub> não tem denominador.</span></li>
+    <li><strong>Inverter a regra do pK<sub>a</sub>.</strong>
+      <span class="why"><b>Por que engana:</b> com K<sub>a</sub>, “maior = mais forte”.</span>
+      <span class="how"><b>Como evitar:</b> pK<sub>a</sub> = −log K<sub>a</sub> inverte a ordem: menor pK<sub>a</sub> = ácido mais forte.</span></li>
+    <li><strong>Achar que pH 7 é sempre neutro.</strong>
+      <span class="why"><b>Por que engana:</b> é a única referência que aparece no caderno.</span>
+      <span class="how"><b>Como evitar:</b> neutro é [H<sup>+</sup>] = [OH<sup>−</sup>]; pH 7 só a 25 °C (a 100 °C, a água neutra tem pH 6,14).</span></li>
+    <li><strong>Errar a potência ao elevar ao quadrado.</strong>
+      <span class="why"><b>Por que engana:</b> é fácil elevar só o número ou só o expoente.</span>
+      <span class="how"><b>Como evitar:</b> (3,7 × 10<sup>−3</sup>)² = 3,7² × 10<sup>−6</sup> = 13,69 × 10<sup>−6</sup> — eleva o número <em>e</em> dobra o expoente.</span></li>
+    <li><strong>Escrever o acetato sem o carbono</strong> (“H<sub>3</sub>COO<sup>−</sup>”).
+      <span class="why"><b>Por que engana:</b> pressa ao “tirar o H” do ácido.</span>
+      <span class="how"><b>Como evitar:</b> o ânion conserva todos os átomos do ácido, menos o H<sup>+</sup> ionizável: CH<sub>3</sub>COOH → CH<sub>3</sub>COO<sup>−</sup>.</span></li>
+  </ol>
+
+  <!-- ========== 7. VESTIBULAR ========== -->
+  <h3 class="sec" id="vestibular"><span class="n">7</span> O que mais importa para os vestibulares</h3>
+  <p>Esta seção organiza o conteúdo pelo tipo de domínio exigido. Ela não traz estatísticas de cobrança por banca; a única referência a uma prova específica é a questão da FUVEST 2015 comentada no <a href="#t4-aluminio">tópico 3.4</a>, conferida no acervo oficial.</p>
+  <div class="recap">
+    <div>
+      <h4>Fundamento indispensável</h4>
+      <ul>
+        <li>Escrever K<sub>a</sub> e K<sub>b</sub> sem a água.</li>
+        <li>Definir α e calcular [H<sup>+</sup>] = α·<span class="var">m</span>.</li>
+        <li>pH = −log[H<sup>+</sup>] com potências de 10 e com os logs dados na prova.</li>
+        <li>K<sub>w</sub> = 10<sup>−14</sup> a 25 °C; meio ácido, neutro e básico.</li>
+        <li>Maior K<sub>a</sub> (menor pK<sub>a</sub>) → ácido mais forte.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Aplicação típica</h4>
+      <ul>
+        <li>K<sub>a</sub> a partir de α e <span class="var">m</span> (Ostwald, com e sem simplificação).</li>
+        <li>pH de ácido fraco a partir de K<sub>a</sub> (tabela com <span class="var">x</span> ou √(K<sub>a</sub>·<span class="var">m</span>)).</li>
+        <li>Caminho inverso: pH → [H<sup>+</sup>] → α → K<sub>a</sub>.</li>
+        <li>Ordenar ácidos por K<sub>a</sub> ou pK<sub>a</sub>; achar [OH<sup>−</sup>] pelo K<sub>w</sub>.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Pegadinhas conhecidas do tema</h4>
+      <ul>
+        <li>Velocidade × quantidade (H<sub>2</sub> liberado, volume de base na titulação).</li>
+        <li>Forte × concentrado; diluição (α ↑, [H<sup>+</sup>] ↓, pH ↑).</li>
+        <li>α em porcentagem; pH negativo; pH 7 fora de 25 °C.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Aprofundamento de maior dificuldade</h4>
+      <ul>
+        <li>Quantificar o efeito da diluição sobre α e pH.</li>
+        <li>K<sub>w</sub> e temperatura (autoionização endotérmica).</li>
+        <li>Ácido forte diluído × ácido fraco concentrado com o mesmo pH.</li>
+        <li>Conexões: efeito indutivo (Orgânica), teoria das colisões (Cinética), mols de ácido (Estequiometria).</li>
+      </ul>
+    </div>
+  </div>
+  <h4 class="mini">Da prova da escola ao vestibular: quatro níveis de domínio</h4>
+  <div class="tw">
+    <table class="wide">
+      <thead><tr><th scope="col">Nível</th><th scope="col">O que significa</th><th scope="col">Exemplo com a Lei de Ostwald</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Enunciar</th><td>saber a regra</td><td>K<sub>a</sub> = α²·<span class="var">m</span>/(1 − α); ≈ α²·<span class="var">m</span> se α ≤ 5%</td></tr>
+        <tr><th scope="row">Reconhecer</th><td>perceber quando ela se aplica</td><td>o enunciado dá α e a concentração de um monoácido e pede K<sub>a</sub></td></tr>
+        <tr><th scope="row">Aplicar</th><td>usar num exercício</td><td>HF 0,01 mol/L com α = 25% → K<sub>a</sub> = 8,3 × 10<sup>−4</sup>, sem simplificar</td></tr>
+        <tr><th scope="row">Transferir</th><td>resolver uma situação nova</td><td>prever que, ao diluir, α aumenta mas o pH também aumenta</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========== 8. VÍDEOS ========== -->
+  <h3 class="sec" id="videos"><span class="n">8</span> Vídeos completos verificados</h3>
+  <p>Verificação feita em <strong>27/10/2026</strong>: cada página foi aberta no navegador para conferir título, canal, duração e se o vídeo estava público e reproduzível; o conteúdo foi conferido pela descrição publicada pelo próprio canal e, quando havia, pelos capítulos (marcações de tempo). A disponibilidade pode mudar depois dessa data. <span class="muted">Um vídeo encontrado na pesquisa foi descartado porque era exclusivo para membros do canal.</span></p>
+
+  <p class="vid-topic">K<sub>a</sub>, K<sub>b</sub>, grau de ionização, Ostwald e pK<sub>a</sub> — tópicos 3.1 a 3.7</p>
+  <article class="vid">
+    <h4 class="vid-t">Cálculo do Ki, Ka, Kb, pKa e pKb; Lei da Diluição de Ostwald; Efeito Íon-Comum |Aula 17 (Química II)</h4>
+    <p class="vid-meta">Marcelão da Química · 1h09min · verificado em 27/10/2026</p>
+    <p><strong>O que você aprende:</strong> expressões de K<sub>i</sub>, K<sub>a</sub> e K<sub>b</sub>; como calcular e interpretar essas constantes; Lei de Ostwald com exercícios de fixação; pK<sub>a</sub> e pK<sub>b</sub>.</p>
+    <p><strong>Por que complementa esta aula:</strong> segue a mesma ordem do seu caderno (K<sub>i</sub> → K<sub>a</sub>/K<sub>b</sub> → Ostwald → pK<sub>a</sub>), com mais exercícios resolvidos.</p>
+    <p><strong>Como aproveitar:</strong> priorize 00:00–36:48 (K<sub>i</sub>, K<sub>a</sub>, K<sub>b</sub> e Ostwald) e 51:07–1:03:45 (pK<sub>a</sub> e pK<sub>b</sub>). Os trechos sobre ácidos com vários H ionizáveis (a partir de 36:48) e efeito do íon comum (1:03:45) vão além do caderno.</p>
+    <a class="watch" href="https://www.youtube.com/watch?v=Hj8IJ774Xmc" target="_blank" rel="noopener">Assistir no YouTube ↗</a>
+  </article>
+
+  <p class="vid-topic">K<sub>w</sub>, pH e pOH — tópicos 3.8 a 3.10</p>
+  <article class="vid">
+    <h4 class="vid-t">pH, pOH, Cálculo, Fórmulas, Escala, Logaritmo, Produto Iônico da Água (Kw) | Aula 18 (Química II)</h4>
+    <p class="vid-meta">Marcelão da Química · 1h30min · verificado em 27/10/2026</p>
+    <p><strong>O que você aprende:</strong> K<sub>w</sub> a 25 °C; meio ácido, básico e neutro pelas concentrações; fórmulas de pH e pOH e a relação pH + pOH = 14; escala; exercícios; pH a partir do grau de ionização; relação entre pH e K<sub>a</sub>/K<sub>b</sub>; revisão de logaritmos.</p>
+    <p><strong>Por que complementa esta aula:</strong> é a continuação direta da aula anterior e cobre os tópicos 3.8 a 3.10, inclusive o pH calculado a partir de α e de K<sub>a</sub>.</p>
+    <p><strong>Como aproveitar:</strong> até 1:11:00 está o núcleo do caderno; a revisão de logaritmos começa em 1:12:03. Os trechos de pH com estequiometria e com diluição (1:11:00 e 1:20:53) são aprofundamento.</p>
+    <a class="watch" href="https://www.youtube.com/watch?v=ydsWBNtbDSI" target="_blank" rel="noopener">Assistir no YouTube ↗</a>
+  </article>
+  <article class="vid">
+    <h4 class="vid-t">EQUILÍBRIO IÔNICO DA ÁGUA E O CONCEITO DE pH E pOH</h4>
+    <p class="vid-meta">Quimicapontocom - Prof. Zanin · 19 min · verificado em 27/10/2026</p>
+    <p><strong>O que você aprende:</strong> o equilíbrio iônico da água, os conceitos de pH e pOH e os critérios de acidez e basicidade de soluções aquosas (segundo a descrição do vídeo).</p>
+    <p><strong>Por que complementa esta aula:</strong> alternativa mais curta à Aula 18, focada no tópico 3.8 e no início do 3.9 — boa para quando o tempo estiver curto.</p>
+    <a class="watch" href="https://www.youtube.com/watch?v=v9GILVjLvjk" target="_blank" rel="noopener">Assistir no YouTube ↗</a>
+  </article>
+
+  <p class="vid-topic">pH de ácidos e bases fracos — tópico 3.10</p>
+  <article class="vid">
+    <h4 class="vid-t">Aula 114 - Cálculo de pH e pOH - Parte Final - Help Química</h4>
+    <p class="vid-meta">Help Química · 41 min · verificado em 27/10/2026</p>
+    <p><strong>O que você aprende:</strong> segundo a descrição, como calcular pH e pOH de espécies que não estão totalmente ionizadas ou dissociadas — ácidos e bases fracos.</p>
+    <p><strong>Por que complementa esta aula:</strong> treina o caminho “K<sub>a</sub> → tabela com <span class="var">x</span> → pH”, o mais trabalhoso do caderno. É a parte final de uma sequência do canal sobre cálculo de pH.</p>
+    <a class="watch" href="https://www.youtube.com/watch?v=tlAgu6EHA1I" target="_blank" rel="noopener">Assistir no YouTube ↗</a>
+  </article>
+
+  <!-- ========== 9. REVISÃO FINAL ========== -->
+  <h3 class="sec" id="revisao-final"><span class="n">9</span> Revisão final dos conceitos principais</h3>
+  <div class="recap">
+    <div><h4>A ideia central</h4><p>Ácido forte ≈ 100% ionizado (→). Ácido fraco: equilíbrio HX ⇌ H<sup>+</sup> + X<sup>−</sup>, com muitas moléculas intactas.</p></div>
+    <div><h4>α — quanto ionizou</h4><p>α = ionizadas ÷ dissolvidas; para monoácido, [H<sup>+</sup>] = α·<span class="var">m</span> (regra de três). Muda com a concentração e a temperatura. Caderno: &gt; 50% forte; &lt; 50% fraco.</p></div>
+    <div><h4>K<sub>a</sub> e K<sub>b</sub> — a tendência</h4><p>K<sub>a</sub> = [H<sup>+</sup>][X<sup>−</sup>]/[HX], sem a água; só muda com a temperatura. Maior K<sub>a</sub> → ácido mais forte; maior K<sub>b</sub> → base mais forte. pK<sub>a</sub> = −log K<sub>a</sub>: menor pK<sub>a</sub> → mais forte.</p></div>
+    <div><h4>A ponte entre α e K<sub>a</sub></h4><p>Tabela I–R/F–E ou Lei de Ostwald: K<sub>a</sub> = α²·<span class="var">m</span>/(1 − α), que vira K<sub>a</sub> ≈ α²·<span class="var">m</span> só se α ≤ 5%. Diluir aumenta α, mas diminui [H<sup>+</sup>].</p></div>
+    <div><h4>A água</h4><p>K<sub>w</sub> = [H<sup>+</sup>]·[OH<sup>−</sup>] = 10<sup>−14</sup> a 25 °C, em qualquer solução aquosa. Água pura: [H<sup>+</sup>] = [OH<sup>−</sup>] = 10<sup>−7</sup> mol/L. K<sub>w</sub> aumenta com a temperatura.</p></div>
+    <div><h4>pH</h4><p>pH = −log[H<sup>+</sup>]; se [H<sup>+</sup>] = <span class="var">a</span> × 10<sup>−<span class="var">n</span></sup>, pH = <span class="var">n</span> − log <span class="var">a</span>. Ácido &lt; 7 &lt; básico (25 °C). Uma unidade de pH = fator 10 em [H<sup>+</sup>]. pH + pOH = 14.</p></div>
+    <div><h4>pH de ácido fraco</h4><p>α dado → regra de três. K<sub>a</sub> dado → tabela com <span class="var">x</span>, <span class="var">x</span> ≈ √(K<sub>a</sub>·<span class="var">m</span>), conferindo α = <span class="var">x</span>/<span class="var">m</span> ≤ 5%.</p></div>
+    <div><h4>Velocidade × quantidade</h4><p>K<sub>a</sub> decide a rapidez (H<sup>+</sup> livre). A quantidade em mol de ácido decide quanto reage — o equilíbrio do ácido fraco vai repondo H<sup>+</sup> até o fim.</p></div>
+  </div>
+
+  <h3 class="sec" id="fontes"><span class="n">+</span> Fontes consultadas</h3>
+  <p>Usadas apenas nos trechos marcados como complemento ou verificação; o conteúdo principal vem do caderno.</p>
+  <ul class="refs">
+    <li><a href="https://chem.libretexts.org/Ancillary_Materials/Reference/Reference_Tables/Equilibrium_Constants/E1:_Acid_Dissociation_Constants_at_25C" target="_blank" rel="noopener">LibreTexts — E1: Acid Dissociation Constants at 25 °C</a> — K<sub>a</sub> e pK<sub>a</sub> dos ácidos acético, cloroacético e fluorídrico.</li>
+    <li>Universidade de Wisconsin–Madison, Chem 109 (Pressbooks): <a href="https://wisc.pb.unizin.org/chem109/?p=1532" target="_blank" rel="noopener">K<sub>b</sub> da amônia</a>, <a href="https://wisc.pb.unizin.org/chem109fall2022/?p=911" target="_blank" rel="noopener">K<sub>a</sub> do ácido cloroacético</a> e <a href="https://wisc.pb.unizin.org/chem109fall2020ver03/?p=727" target="_blank" rel="noopener">K<sub>a</sub> do HF</a>.</li>
+    <li><a href="https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_Theoretical_Chemistry)/Equilibria/Acid-Base_Equilibria/3._The_Ionic_Product_for_Water" target="_blank" rel="noopener">LibreTexts — The Ionic Product for Water</a> — valores de K<sub>w</sub> e do pH neutro em diferentes temperaturas.</li>
+    <li><a href="https://www.infoescola.com/quimica/acidos-fortes/" target="_blank" rel="noopener">InfoEscola — Ácidos fortes</a> — classificação forte/moderado/fraco pelo grau de ionização (com referências a Feltre e à coleção Ser Protagonista).</li>
+    <li><a href="https://acervo.fuvest.br/fuvest/2015/fuv2015_1fase_prova_V.pdf" target="_blank" rel="noopener">FUVEST — Prova de Conhecimentos Gerais 2015 (prova V)</a> — questão 80, citada no tópico 3.4.</li>
+  </ul>
+</section>
+
+<!-- =============================================================
+     ÁREA 2 — KIT DE REVISÃO PRÉ-PROVA
+     ============================================================= -->
+<section class="area" id="kit" aria-labelledby="kit-title">
+  <div class="area-head kit">
+    <p class="area-tag">Área 2</p>
+    <h2 class="area-title" id="kit-title">Kit de revisão pré-prova</h2>
+    <p>Feito para usar sozinho, perto da prova. Tudo o que você precisa está aqui; os links “na aula” levam à explicação longa, se precisar.</p>
+  </div>
+
+  <!-- K1 -->
+  <h3 class="sec" id="k-estrategia"><span class="n">K1</span> Estratégia deste kit</h3>
+  <p>Equilíbrio iônico é Química quantitativa com algumas armadilhas conceituais. Na prova, você precisa: <strong>(1)</strong> reconhecer qual dado o enunciado deu (α, K<sub>a</sub>, pH…); <strong>(2)</strong> escolher o caminho de cálculo; <strong>(3)</strong> fazer a conta de potência e log sem tropeçar; <strong>(4)</strong> não cair nas confusões clássicas (forte × concentrado, velocidade × quantidade). Por isso o kit combina:</p>
+  <ul>
+    <li>um <strong>cartão de fórmulas com as condições de uso</strong> (K4);</li>
+    <li><strong>sinais para reconhecer a questão</strong> e um <strong>roteiro de resolução</strong> (K5 e K6);</li>
+    <li><strong>comparações</strong> e <strong>erros proibidos</strong> (K7 e K8);</li>
+    <li><strong>recuperação ativa</strong>: flashcards e um teste com gabarito escondido (K10 e K11), seguidos de um <strong>diagnóstico</strong> (K12).</li>
+  </ul>
+  <div class="box k-int" role="note">
+    <span class="box-t">Importante</span>
+    <p>As prioridades abaixo são uma estratégia de estudo baseada no conteúdo do seu caderno — não uma previsão do que o professor vai cobrar. Na prova da escola, siga as convenções do seu professor (por exemplo, o critério de 50% para ácido forte).</p>
+  </div>
+  <p><strong>Regra de ouro:</strong> tente responder antes de abrir qualquer gabarito. Reler e achar o texto “familiar” não prova que você sabe.</p>
+
+  <!-- K2 -->
+  <h3 class="sec" id="k-rotas"><span class="n">K2</span> Rotas por tempo disponível</h3>
+  <div class="routes">
+    <article class="route">
+      <h4 class="route-t">Emergência</h4>
+      <p class="time">10 A 15 MIN</p>
+      <ol>
+        <li>Cartão de fórmulas (<a href="#k-formulas">K4</a>) — 4 min</li>
+        <li>Roteiro de resolução (<a href="#k-roteiro">K6</a>) — 2 min</li>
+        <li>Teste: questões 3, 6, 8 e 10 (<a href="#k-teste">K11</a>), sem consultar — 6 min</li>
+        <li>Corrija e leia no diagnóstico (<a href="#k-diagnostico">K12</a>) o que errou — 3 min</li>
+      </ol>
+      <p class="muted"><small>Fecha as lacunas mais graves; não substitui o estudo.</small></p>
+    </article>
+    <article class="route">
+      <h4 class="route-t">Rápida</h4>
+      <p class="time">CERCA DE 30 MIN</p>
+      <ol>
+        <li>K4 a K7: fórmulas, sinais, roteiro e comparações — 12 min</li>
+        <li>Teste: questões 1 a 8 — 14 min</li>
+        <li>Correção e diagnóstico — 4 min</li>
+      </ol>
+    </article>
+    <article class="route">
+      <h4 class="route-t">Completa</h4>
+      <p class="time">CERCA DE 60 MIN</p>
+      <ol>
+        <li>K3 a K10 — 20 min</li>
+        <li>Teste completo (1 a 12) — 25 min</li>
+        <li>Refaça sem olhar os exercícios do caderno: HX com α = 3,7%; HF com α = 25%; ácido acético com K<sub>a</sub> = 10<sup>−5</sup> → pH — 10 min</li>
+        <li>Diagnóstico e releitura, na aula, do que errou — 5 min</li>
+      </ol>
+    </article>
+  </div>
+
+  <!-- K3 -->
+  <h3 class="sec" id="k-prioridades"><span class="n">K3</span> Prioridades</h3>
+  <div class="prio">
+    <div class="prio-item">
+      <span class="pill p1">P1</span>
+      <div>
+        <p><strong>Domínio indispensável</strong></p>
+        <ul>
+          <li>Escrever K<sub>a</sub> (sem a água) e K<sub>b</sub>.</li>
+          <li>α e [H<sup>+</sup>] = α·<span class="var">m</span> pela regra de três.</li>
+          <li>pH = −log[H<sup>+</sup>] com potências de 10.</li>
+          <li>K<sub>w</sub> = 10<sup>−14</sup> e neutro = pH 7, ambos a 25 °C.</li>
+          <li>Maior K<sub>a</sub> (menor pK<sub>a</sub>) → ácido mais forte.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="prio-item">
+      <span class="pill p2">P2</span>
+      <div>
+        <p><strong>Aplicação e diferenciação</strong></p>
+        <ul>
+          <li>Tabela I–R/F–E.</li>
+          <li>Ostwald completa × simplificada (só com α ≤ 5%).</li>
+          <li>pH com log 2, 3 e 5.</li>
+          <li>K<sub>a</sub> → pH; pH → α → K<sub>a</sub>.</li>
+          <li>Velocidade × quantidade de H<sub>2</sub>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="prio-item">
+      <span class="pill p3">P3</span>
+      <div>
+        <p><strong>Aprofundamento</strong></p>
+        <ul>
+          <li>Diluição: α ↑, [H<sup>+</sup>] ↓, pH ↑.</li>
+          <li>pOH e pH + pOH = 14.</li>
+          <li>K<sub>w</sub> e temperatura.</li>
+          <li>Ácido forte diluído × ácido fraco concentrado.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- K4 -->
+  <h3 class="sec" id="k-formulas"><span class="n">K4</span> Cartão de fórmulas — com as condições de uso</h3>
+  <div class="tw">
+    <table class="wide">
+      <thead><tr><th scope="col">Fórmula</th><th scope="col">O que significa</th><th scope="col">Vale quando / cuidado</th><th scope="col">Na aula</th></tr></thead>
+      <tbody>
+        <tr><td class="math">K<sub>a</sub> = [H<sup>+</sup>]·[X<sup>−</sup>] ÷ [HX]</td><td>constante de ionização do ácido</td><td>água não entra; só muda com a temperatura; maior K<sub>a</sub> = mais forte</td><td><a href="#t3-ka-kb">3.3</a></td></tr>
+        <tr><td class="math">K<sub>b</sub> = [X<sup>+</sup>]·[OH<sup>−</sup>] ÷ [XOH]</td><td>idem, para base</td><td>maior K<sub>b</sub> = base mais forte</td><td><a href="#t3-ka-kb">3.3</a></td></tr>
+        <tr><td class="math">α = ionizadas ÷ dissolvidas</td><td>fração que ionizou</td><td>nas fórmulas, use decimal (3,7% = 0,037); caderno: &gt; 50% forte</td><td><a href="#t2-alfa">3.2</a></td></tr>
+        <tr><td class="math">[H<sup>+</sup>] = α · <span class="var">m</span></td><td>H<sup>+</sup> formado (regra de três: <span class="var">m</span> — 100%; [H<sup>+</sup>] — α%)</td><td>monoácido HX</td><td><a href="#t2-alfa">3.2</a></td></tr>
+        <tr><td class="math">K<sub>a</sub> = α²·<span class="var">m</span> ÷ (1 − α)</td><td>Lei de Ostwald</td><td>monoácido; sempre vale</td><td><a href="#t6-ostwald">3.6</a></td></tr>
+        <tr><td class="math">K<sub>a</sub> ≈ α² · <span class="var">m</span></td><td>Ostwald simplificada</td><td><strong>só se α ≤ 5%</strong></td><td><a href="#t6-ostwald">3.6</a></td></tr>
+        <tr><td class="math">[H<sup>+</sup>] ≈ √(K<sub>a</sub> · <span class="var">m</span>)</td><td>atalho da tabela com <span class="var">x</span></td><td>ácido fraco; confira α = [H<sup>+</sup>] ÷ <span class="var">m</span> ≤ 5%</td><td><a href="#t10-ph-fraco">3.10</a></td></tr>
+        <tr><td class="math">pK<sub>a</sub> = −log K<sub>a</sub></td><td>força em escala log</td><td><strong>menor</strong> pK<sub>a</sub> = mais forte</td><td><a href="#t7-pka">3.7</a></td></tr>
+        <tr><td class="math">K<sub>w</sub> = [H<sup>+</sup>]·[OH<sup>−</sup>] = 10<sup>−14</sup></td><td>produto iônico da água</td><td>25 °C; vale em qualquer solução aquosa; aumenta com a temperatura</td><td><a href="#t8-kw">3.8</a></td></tr>
+        <tr><td class="math">pH = −log[H<sup>+</sup>]</td><td>acidez da solução</td><td>[H<sup>+</sup>] em mol/L; ácido &lt; 7 &lt; básico (25 °C)</td><td><a href="#t9-ph">3.9</a></td></tr>
+        <tr><td class="math">[H<sup>+</sup>] = <span class="var">a</span> × 10<sup>−<span class="var">n</span></sup> → pH = <span class="var">n</span> − log <span class="var">a</span></td><td>pH com número na frente</td><td>log 2 ≈ 0,3 · log 3 ≈ 0,48 · log 5 ≈ 0,7; o resultado fica entre <span class="var">n</span> − 1 e <span class="var">n</span></td><td><a href="#t9-ph">3.9</a></td></tr>
+        <tr><td class="math">pOH = −log[OH<sup>−</sup>]; pH + pOH = 14</td><td>escala do OH<sup>−</sup></td><td>25 °C</td><td><a href="#t9-ph">3.9</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- K5 -->
+  <h3 class="sec" id="k-reconhecer"><span class="n">K5</span> Como reconhecer o que a questão está pedindo</h3>
+  <ul class="signal">
+    <li><span class="s">“grau de ionização”, “α = …%”, “x% das moléculas ionizam”</span><span class="to" aria-hidden="true">→</span><span class="tool">[H<sup>+</sup>] = α·<span class="var">m</span> (regra de três); se pedir K<sub>a</sub>, Ostwald</span></li>
+    <li><span class="s">“K<sub>a</sub> = …” e uma concentração, pedindo [H<sup>+</sup>] ou pH</span><span class="to" aria-hidden="true">→</span><span class="tool">tabela com <span class="var">x</span> (ou √(K<sub>a</sub>·<span class="var">m</span>))</span></li>
+    <li><span class="s">“o pH é …” e pede α ou K<sub>a</sub></span><span class="to" aria-hidden="true">→</span><span class="tool">caminho inverso: [H<sup>+</sup>] = 10<sup>−pH</sup> → α = [H<sup>+</sup>] ÷ <span class="var">m</span> → K<sub>a</sub></span></li>
+    <li><span class="s">“qual ácido é mais forte?”, tabela de K<sub>a</sub> ou pK<sub>a</sub></span><span class="to" aria-hidden="true">→</span><span class="tool">maior K<sub>a</sub> / menor pK<sub>a</sub></span></li>
+    <li><span class="s">“ácido forte”, “totalmente ionizado”, HCl, HNO<sub>3</sub></span><span class="to" aria-hidden="true">→</span><span class="tool">[H<sup>+</sup>] = <span class="var">m</span>, sem tabela</span></li>
+    <li><span class="s">“[OH<sup>−</sup>]”, “pOH”, base</span><span class="to" aria-hidden="true">→</span><span class="tool">K<sub>w</sub> ou pH + pOH = 14 (25 °C)</span></li>
+    <li><span class="s">“rapidez”, “velocidade de liberação de H<sub>2</sub>”</span><span class="to" aria-hidden="true">→</span><span class="tool">K<sub>a</sub> (H<sup>+</sup> livre)</span></li>
+    <li><span class="s">“volume total de H<sub>2</sub>”, “quantidade que reage”, “volume de base gasto”</span><span class="to" aria-hidden="true">→</span><span class="tool">quantidade em mol de ácido — não o K<sub>a</sub></span></li>
+    <li><span class="s">“diluição”, “adiciona-se água”</span><span class="to" aria-hidden="true">→</span><span class="tool">Ostwald: α ↑, [H<sup>+</sup>] ↓, pH ↑</span></li>
+    <li><span class="s">temperatura diferente de 25 °C</span><span class="to" aria-hidden="true">→</span><span class="tool">K<sub>w</sub> ≠ 10<sup>−14</sup>; neutro = [H<sup>+</sup>] = [OH<sup>−</sup>]</span></li>
+  </ul>
+
+  <!-- K6 -->
+  <h3 class="sec" id="k-roteiro"><span class="n">K6</span> Roteiro de resolução</h3>
+  <ol class="steps">
+    <li><strong>Escreva a equação</strong> de ionização (HX ⇌ H<sup>+</sup> + X<sup>−</sup>) e confira a proporção <span class="nowrap">1 : 1 : 1</span>.</li>
+    <li><strong>Liste os dados</strong> com unidades e converta α para decimal.</li>
+    <li><strong>Escolha o caminho:</strong> α dado → regra de três; K<sub>a</sub> dado → tabela com <span class="var">x</span>; ácido forte → [H<sup>+</sup>] = <span class="var">m</span>; pH dado → [H<sup>+</sup>] = 10<sup>−pH</sup>.</li>
+    <li><strong>Se aproximar</strong> (<span class="var">m</span> − <span class="var">x</span> ≈ <span class="var">m</span>), confira no fim: α = <span class="var">x</span> ÷ <span class="var">m</span> ≤ 5%. Se passar, use a forma completa.</li>
+    <li><strong>Faça as contas com potências de 10:</strong> multiplicar soma expoentes; dividir subtrai; raiz divide o expoente por 2.</li>
+    <li><strong>pH:</strong> com [H<sup>+</sup>] = <span class="var">a</span> × 10<sup>−<span class="var">n</span></sup>, pH = <span class="var">n</span> − log <span class="var">a</span>. Estime a faixa antes.</li>
+    <li><strong>Confira o sentido:</strong> K<sub>a</sub> de ácido fraco bem menor que 1; pH dentro da faixa estimada; solução ácida com pH &lt; 7 (25 °C).</li>
+  </ol>
+
+  <!-- K7 -->
+  <h3 class="sec" id="k-comparacoes"><span class="n">K7</span> Comparações que evitam confusão</h3>
+  <div class="tw">
+    <table class="mid">
+      <thead><tr><th scope="col">Par</th><th scope="col">Diferença decisiva</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">α × K<sub>a</sub></th><td>α = quanto ionizou <em>nesta</em> solução (muda com a concentração e a temperatura); K<sub>a</sub> = tendência do ácido (só muda com a temperatura).</td></tr>
+        <tr><th scope="row">Forte × concentrado</th><td>Forte = ioniza quase tudo (α e K<sub>a</sub> grandes). Concentrado = muito ácido dissolvido (<span class="var">m</span> grande).</td></tr>
+        <tr><th scope="row">Velocidade × quantidade</th><td>Velocidade ← H<sup>+</sup> livre (K<sub>a</sub>). Quantidade total de H<sub>2</sub> ou de base gasta ← mols de ácido.</td></tr>
+        <tr><th scope="row">K<sub>a</sub> × pK<sub>a</sub></th><td>K<sub>a</sub> maior = mais forte. pK<sub>a</sub> <em>menor</em> = mais forte.</td></tr>
+        <tr><th scope="row">[H<sup>+</sup>] × pH</th><td>[H<sup>+</sup>] maior → pH menor. Uma unidade de pH = fator 10 em [H<sup>+</sup>].</td></tr>
+        <tr><th scope="row">Ostwald completa × simplificada</th><td>A completa vale sempre (monoácido); a simplificada só com α ≤ 5%.</td></tr>
+        <tr><th scope="row">Neutro × pH 7</th><td>Neutro = [H<sup>+</sup>] = [OH<sup>−</sup>] em qualquer temperatura; pH 7 é neutro só a 25 °C.</td></tr>
+        <tr><th scope="row">Ionização × dissociação</th><td>Ionização forma íons novos (ácidos moleculares); dissociação separa íons que já existiam (bases iônicas).</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- K8 -->
+  <h3 class="sec" id="k-erros"><span class="n">K8</span> Erros que não podem acontecer</h3>
+  <ul>
+    <li><strong>pH negativo por esquecer o “−” final</strong> → [H<sup>+</sup>] = 2 × 10<sup>−3</sup> dá pH 2,7, não −2,7.</li>
+    <li><strong>α em porcentagem na fórmula</strong> → use 0,037, nunca 3,7.</li>
+    <li><strong>Simplificar com α grande</strong> → HF com α = 25%: use (1 − α).</li>
+    <li><strong>“K<sub>a</sub> grande produz mais H<sub>2</sub>”</strong> → produz mais <em>rápido</em>; o total depende dos mols de ácido.</li>
+    <li><strong>Água dentro da expressão de K</strong> → solvente não entra.</li>
+    <li><strong>“Diluir ácido fraco deixa mais ácido”</strong> → α sobe, mas [H<sup>+</sup>] cai e o pH sobe.</li>
+  </ul>
+
+  <!-- K9 -->
+  <h3 class="sec" id="k-exemplos"><span class="n">K9</span> Exemplos essenciais</h3>
+  <div class="recap">
+    <div>
+      <h4>A · De α para K<sub>a</sub> (α pequeno)</h4>
+      <p>HX 0,1 mol/L, α = 3,7% → [H<sup>+</sup>] = 0,1 × 0,037 = 3,7 × 10<sup>−3</sup> mol/L → K<sub>a</sub> ≈ (0,037)² · 0,1 = <strong>1,4 × 10<sup>−4</sup></strong>. Pode simplificar: α ≤ 5%. <a href="#t5-tabela">Na aula</a>.</p>
+    </div>
+    <div>
+      <h4>B · De α para K<sub>a</sub> (α grande)</h4>
+      <p>HF 0,01 mol/L, α = 25% → [H<sup>+</sup>] = 2,5 × 10<sup>−3</sup>; [HF] = 7,5 × 10<sup>−3</sup> → K<sub>a</sub> = (2,5 × 10<sup>−3</sup>)² ÷ 7,5 × 10<sup>−3</sup> = <strong>8,3 × 10<sup>−4</sup></strong>. Não simplifique. <a href="#t6-ostwald">Na aula</a>.</p>
+    </div>
+    <div>
+      <h4>C · De K<sub>a</sub> para pH</h4>
+      <p>Ácido acético 0,1 mol/L, K<sub>a</sub> = 10<sup>−5</sup> → <span class="var">x</span>² = 10<sup>−5</sup> · 10<sup>−1</sup> = 10<sup>−6</sup> → <span class="var">x</span> = 10<sup>−3</sup> → <strong>pH 3</strong>. Conferência: α = 1% ✓. <a href="#t10-ph-fraco">Na aula</a>.</p>
+    </div>
+    <div>
+      <h4>D · pH com log</h4>
+      <p>[H<sup>+</sup>] = 2 × 10<sup>−3</sup> → pH = 3 − log 2 = 3 − 0,3 = <strong>2,7</strong> (entre 2 e 3 ✓). <a href="#t9-ph">Na aula</a>.</p>
+    </div>
+  </div>
+
+  <!-- K10 -->
+  <h3 class="sec" id="k-flashcards"><span class="n">K10</span> Flashcards</h3>
+  <p>Leia a pergunta, responda em voz alta ou no papel e só então abra o cartão.</p>
+  <div class="cards">
+    <details class="card"><summary>O que significa α = 1%?</summary><div class="card-a">De cada 100 moléculas dissolvidas, em média 1 está ionizada a cada instante.</div></details>
+    <details class="card"><summary>Por que a água não entra na expressão de K<sub>a</sub>?</summary><div class="card-a">É o solvente líquido: sua concentração é praticamente constante e fica incorporada à constante.</div></details>
+    <details class="card"><summary>K<sub>a</sub> depende de quê?</summary><div class="card-a">Só da temperatura — não da concentração.</div></details>
+    <details class="card"><summary>Quando posso usar K<sub>a</sub> ≈ α²·<span class="var">m</span>?</summary><div class="card-a">Quando α ≤ 5%, porque aí 1 − α ≈ 1.</div></details>
+    <details class="card"><summary>pK<sub>a</sub> menor significa o quê?</summary><div class="card-a">Ácido mais forte (K<sub>a</sub> maior).</div></details>
+    <details class="card"><summary>Quanto vale K<sub>w</sub> a 25 °C? E [H<sup>+</sup>] na água pura?</summary><div class="card-a">K<sub>w</sub> = 10<sup>−14</sup>; [H<sup>+</sup>] = [OH<sup>−</sup>] = 10<sup>−7</sup> mol/L.</div></details>
+    <details class="card"><summary>Ao diluir um ácido fraco, o que acontece com α e com o pH?</summary><div class="card-a">α aumenta; [H<sup>+</sup>] diminui, então o pH aumenta.</div></details>
+    <details class="card"><summary>K<sub>a</sub> maior: reação com metal mais rápida ou mais H<sub>2</sub> no total?</summary><div class="card-a">Mais rápida. O total de H<sub>2</sub> depende da quantidade em mol de ácido.</div></details>
+    <details class="card"><summary>pH 7 é sempre neutro?</summary><div class="card-a">Não. Neutro é [H<sup>+</sup>] = [OH<sup>−</sup>]; pH 7 só corresponde a isso a 25 °C.</div></details>
+  </div>
+
+  <!-- K11 -->
+  <h3 class="sec" id="k-teste"><span class="n">K11</span> Teste de recuperação</h3>
+  <p>Responda no papel antes de abrir o gabarito. Dados que podem ser úteis: log 2 = 0,3 · log 5 = 0,7 · K<sub>w</sub> = 10<sup>−14</sup> (25 °C). Todas as questões usam só o que está nesta página.</p>
+
+  <div class="q">
+    <div class="q-h"><span class="q-n">Questão 1</span><span class="q-tag">P1 · conceito</span></div>
+    <p>Escreva a expressão de K<sub>a</sub> para HF(aq) ⇌ H<sup>+</sup>(aq) + F<sup>−</sup>(aq). Por que a água não aparece quando a equação é escrita como HF + H<sub>2</sub>O ⇌ H<sub>3</sub>O<sup>+</sup> + F<sup>−</sup>?</p>
+    <div class="workspace">Sua resposta</div>
+    <details class="rev"><summary>Ver gabarito</summary><div class="rev-body">
+      <p>K<sub>a</sub> = [H<sup>+</sup>]·[F<sup>−</sup>] ÷ [HF] (ou [H<sub>3</sub>O<sup>+</sup>]·[F<sup>−</sup>] ÷ [HF]). A água é o solvente líquido; sua concentração é praticamente constante e fica incorporada à constante.</p>
+    </div></details>
+  </div>
+
+  <div class="q">
+    <div class="q-h"><span class="q-n">Questão 2</span><span class="q-tag">P1 · comparação</span></div>
+    <p>Ácido A: K<sub>a</sub> = 1,8 × 10<sup>−5</sup>. Ácido B: K<sub>a</sub> = 1,4 × 10<sup>−3</sup>. (a) Qual é mais forte? (b) Qual tem o menor pK<sub>a</sub>?</p>
+    <div class="workspace">Sua resposta</div>
+    <details class="rev"><summary>Ver gabarito</summary><div class="rev-body">
+      <p>(a) B, porque tem o maior K<sub>a</sub>. (b) Também B: pK<sub>a</sub> = −log K<sub>a</sub> diminui quando K<sub>a</sub> aumenta. A confusão comum é achar que pK<sub>a</sub> maior indica ácido mais forte.</p>
+    </div></details>
+  </div>
+
+  <div class="q">
+    <div class="q-h"><span class="q-n">Questão 3</span><span class="q-tag">P1 · cálculo</span></div>
+    <p>Um monoácido HA 0,05 mol/L tem α = 2%. Calcule [H<sup>+</sup>] e o pH.</p>
+    <div class="workspace">Sua resolução</div>
+    <details class="rev"><summary>Ver gabarito</summary><div class="rev-body">
+      <p>Regra de três: 0,05 ——— 100%; [H<sup>+</sup>] ——— 2% → [H<sup>+</sup>] = 0,05 × 0,02 = <strong>1 × 10<sup>−3</sup> mol/L</strong> → <strong>pH = 3</strong>.</p>
+    </div></details>
+  </div>
+
+  <div class="q">
+    <div class="q-h"><span class="q-n">Questão 4</span><span class="q-tag">P2 · Ostwald</span></div>
+    <p>Para o ácido da questão 3, calcule K<sub>a</sub>. É permitido usar a forma simplificada? Justifique.</p>
+    <div class="workspace">Sua resolução</div>
+    <details class="rev"><summary>Ver gabarito</summary><div class="rev-body">
+      <p>Sim, porque α = 2% ≤ 5%. K<sub>a</sub> ≈ α²·<span class="var">m</span> = (0,02)² · 0,05 = 4 × 10<sup>−4</sup> · 5 × 10<sup>−2</sup> = 20 × 10<sup>−6</sup> = <strong>2 × 10<sup>−5</sup></strong>. (Pela forma completa: 2 × 10<sup>−5</sup> ÷ 0,98 ≈ 2,04 × 10<sup>−5</sup> — praticamente igual.)</p>
+    </div></details>
+  </div>
+
+  <div class="q">
+    <div class="q-h"><span class="q-n">Questão 5</span><span class="q-tag">P2 · Ostwald completa</span></div>
+    <p>Um monoácido 0,02 mol/L tem α = 20%. Calcule K<sub>a</sub>. Por que não dá para usar K<sub>a</sub> ≈ α²·<span class="var">m</span>?</p>
+    <div class="workspace">Sua resolução</div>
+    <details class="rev"><summary>Ver gabarito</summary><div class="rev-body">
+      <p>K<sub>a</sub> = α²·<span class="var">m</span> ÷ (1 − α) = (0,2)² · 0,02 ÷ 0,8 = 8 × 10<sup>−4</sup> ÷ 0,8 = <strong>1 × 10<sup>−3</sup></strong>. A forma simplificada daria 8 × 10<sup>−4</sup>, 20% abaixo, porque α = 20% não é pequeno: 1 − α = 0,8, e não ≈ 1.</p>
+    </div></details>
+  </div>
+
+  <div class="q">
+    <div class="q-h"><span class="q-n">Questão 6</span><span class="q-tag">P2 · K<sub>a</sub> → pH</span></div>
+    <p>Uma solução 0,01 mol/L de um ácido fraco HA tem K<sub>a</sub> = 1 × 10<sup>−6</sup>. Calcule [H<sup>+</sup>] e o pH, e confira se a aproximação era válida.</p>
+    <div class="workspace">Sua resolução</div>
+    <details class="rev"><summary>Ver gabarito</summary><div class="rev-body">
+      <p><span class="var">x</span>² = K<sub>a</sub>·<span class="var">m</span> = 10<sup>−6</sup> · 10<sup>−2</sup> = 10<sup>−8</sup> → <span class="var">x</span> = <strong>10<sup>−4</sup> mol/L</strong> → <strong>pH = 4</strong>. Conferência: α = 10<sup>−4</sup> ÷ 10<sup>−2</sup> = 1% ≤ 5% → aproximação válida.</p>
+    </div></details>
+  </div>
+
+  <div class="q">
+    <div class="q-h"><span class="q-n">Questão 7</span><span class="q-tag">P2 · log</span></div>
+    <p>Calcule o pH de uma solução com [H<sup>+</sup>] = 5 × 10<sup>−4</sup> mol/L.</p>
+    <div class="workspace">Sua resolução</div>
+    <details class="rev"><summary>Ver gabarito</summary><div class="rev-body">
+      <p>pH = −(log 5 + log 10<sup>−4</sup>) = −(0,7 − 4) = <strong>3,3</strong>. Faixa: 5 × 10<sup>−4</sup> está entre 10<sup>−4</sup> (pH 4) e 10<sup>−3</sup> (pH 3) ✓.</p>
+    </div></details>
+  </div>
+
+  <div class="q">
+    <div class="q-h"><span class="q-n">Questão 8</span><span class="q-tag">P1 · encontre o erro</span></div>
+    <p>Um colega resolveu: “[H<sup>+</sup>] = 2 × 10<sup>−3</sup> → pH = −log(2 × 10<sup>−3</sup>) = log 2 + log 10<sup>−3</sup> = 0,3 − 3 = −2,7”. Onde está o erro e qual é o pH correto?</p>
+    <div class="workspace">Sua resposta</div>
+    <details class="rev"><summary>Ver gabarito</summary><div class="rev-body">
+      <p>O sinal de menos da definição sumiu na segunda passagem: o certo é pH = −(log 2 + log 10<sup>−3</sup>) = −(0,3 − 3) = <strong>2,7</strong>. Um pH negativo exigiria [H<sup>+</sup>] maior que 1 mol/L.</p>
+    </div></details>
+  </div>
+
+  <div class="q">
+    <div class="q-h"><span class="q-n">Questão 9</span><span class="q-tag">P1 · K<sub>w</sub></span></div>
+    <p>A 25 °C, uma solução tem [H<sup>+</sup>] = 1 × 10<sup>−3</sup> mol/L. Calcule [OH<sup>−</sup>] e classifique o meio.</p>
+    <div class="workspace">Sua resolução</div>
+    <details class="rev"><summary>Ver gabarito</summary><div class="rev-body">
+      <p>[OH<sup>−</sup>] = 10<sup>−14</sup> ÷ 10<sup>−3</sup> = <strong>10<sup>−11</sup> mol/L</strong>. Como [H<sup>+</sup>] &gt; [OH<sup>−</sup>], o meio é <strong>ácido</strong> (pH 3).</p>
+    </div></details>
+  </div>
+
+  <div class="q">
+    <div class="q-h"><span class="q-n">Questão 10</span><span class="q-tag">P2 · velocidade × quantidade</span></div>
+    <p>Dois frascos têm o mesmo volume de solução 0,1 mol/L: um de HCl e outro de ácido acético. Coloca-se alumínio em excesso em cada um. (a) Em qual o H<sub>2</sub> é liberado mais rapidamente? (b) Em qual se forma mais H<sub>2</sub> no total?</p>
+    <div class="workspace">Sua resposta</div>
+    <details class="rev"><summary>Ver gabarito</summary><div class="rev-body">
+      <p>(a) No <strong>HCl</strong>: K<sub>a</sub> muito grande → mais H<sup>+</sup> livre → mais colisões efetivas por segundo. (b) <strong>A mesma quantidade nos dois</strong>: há a mesma quantidade em mol de ácido, e no acético o equilíbrio vai repondo H<sup>+</sup> até todo o ácido reagir. É a mesma ideia da questão 80 da FUVEST 2015, com titulação no lugar do metal.</p>
+    </div></details>
+  </div>
+
+  <div class="q">
+    <div class="q-h"><span class="q-n">Questão 11</span><span class="q-tag">P3 · desafio: diluição</span></div>
+    <p>Ácido acético 0,1 mol/L (K<sub>a</sub> = 1 × 10<sup>−5</sup>, α = 1%) é diluído 100 vezes, ficando 0,001 mol/L. Use K<sub>a</sub> ≈ α²·<span class="var">m</span> para estimar o novo α e o novo pH. O que aconteceu com α? E com a acidez?</p>
+    <div class="workspace">Sua resolução</div>
+    <details class="rev"><summary>Ver gabarito</summary><div class="rev-body">
+      <p>α ≈ √(K<sub>a</sub> ÷ <span class="var">m</span>) = √(10<sup>−5</sup> ÷ 10<sup>−3</sup>) = √(10<sup>−2</sup>) = 0,1 = <strong>10%</strong>. [H<sup>+</sup>] = α·<span class="var">m</span> = 0,1 × 10<sup>−3</sup> = 10<sup>−4</sup> → <strong>pH ≈ 4</strong>. α aumentou cerca de 10 vezes, mas [H<sup>+</sup>] caiu cerca de 10 vezes: a solução ficou <strong>menos ácida</strong> (pH 3 → 4). Como α chegou a 10%, a forma simplificada fica no limite; a conta exata dá α ≈ 9,5% e pH ≈ 4,0.</p>
+    </div></details>
+  </div>
+
+  <div class="q">
+    <div class="q-h"><span class="q-n">Questão 12</span><span class="q-tag">P3 · desafio de vestibular</span></div>
+    <p>Solução I: HNO<sub>3</sub> (ácido forte) 1 × 10<sup>−4</sup> mol/L. Solução II: o ácido fraco da questão 6 (HA 0,01 mol/L, K<sub>a</sub> = 1 × 10<sup>−6</sup>). (a) Compare os pH. (b) Volumes iguais das duas reagem com alumínio em excesso: qual libera mais H<sub>2</sub> no total, e quantas vezes mais?</p>
+    <div class="workspace">Sua resolução</div>
+    <details class="rev"><summary>Ver gabarito</summary><div class="rev-body">
+      <p>(a) I: [H<sup>+</sup>] = 10<sup>−4</sup> → pH 4. II: pela questão 6, [H<sup>+</sup>] = 10<sup>−4</sup> → pH 4. <strong>O mesmo pH.</strong></p>
+      <p>(b) A solução II libera <strong>100 vezes mais H<sub>2</sub></strong>: no mesmo volume, ela tem 100 vezes mais ácido em mol (0,01 contra 0,0001 mol/L), e todo esse ácido acaba reagindo. O pH mede só o H<sup>+</sup> livre naquele instante, não o total de ácido disponível.</p>
+    </div></details>
+  </div>
+
+  <!-- K12 -->
+  <h3 class="sec" id="k-diagnostico"><span class="n">K12</span> Diagnóstico: o que revisar</h3>
+  <div class="tw">
+    <table class="mid">
+      <thead><tr><th scope="col">Se você errou…</th><th scope="col">O problema provável</th><th scope="col">Revise</th></tr></thead>
+      <tbody>
+        <tr><td>Questão 1</td><td>expressão de K; água fora</td><td><a href="#t1-ionizacao">3.1</a> e <a href="#t3-ka-kb">3.3</a></td></tr>
+        <tr><td>Questão 2</td><td>leitura de K<sub>a</sub> e pK<sub>a</sub></td><td><a href="#t3-ka-kb">3.3</a> e <a href="#t7-pka">3.7</a></td></tr>
+        <tr><td>Questões 3 e 4</td><td>α, regra de três e Ostwald simplificada</td><td><a href="#t2-alfa">3.2</a> e <a href="#t6-ostwald">3.6</a></td></tr>
+        <tr><td>Questão 5</td><td>quando não simplificar</td><td><a href="#t6-ostwald">3.6</a> (Exemplo 1, HF)</td></tr>
+        <tr><td>Questão 6</td><td>tabela com <span class="var">x</span></td><td><a href="#t10-ph-fraco">3.10</a></td></tr>
+        <tr><td>Questões 7 e 8</td><td>logaritmo e sinal do pH</td><td><a href="#p5-log">2.5</a> e <a href="#t9-ph">3.9</a></td></tr>
+        <tr><td>Questão 9</td><td>produto iônico da água</td><td><a href="#t8-kw">3.8</a></td></tr>
+        <tr><td>Questões 10 e 12(b)</td><td>velocidade × quantidade</td><td><a href="#t4-aluminio">3.4</a></td></tr>
+        <tr><td>Questão 11</td><td>efeito da diluição</td><td><a href="#t6-ostwald">3.6</a> (aprofundamento)</td></tr>
+        <tr><td>Questão 12(a)</td><td>forte × concentrado</td><td><a href="#t10-ph-fraco">3.10</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Errou mais de três? Volte aos tópicos indicados na aula completa e refaça o teste em outro dia: repetir a recuperação depois de um intervalo fixa melhor do que reler tudo de uma vez.</p>
+</section>
+
+<footer class="end">
+  <p>Aula e kit gerados em 27/10/2026 a partir das quatro fotos do caderno. Complementos externos estão identificados ao longo do texto, com fontes; os vídeos foram verificados nessa data.</p>
+</footer>
+
+</main>
+</div>
+
+<a class="to-top" href="#topo" aria-label="Voltar ao topo">↑</a>
+
+<script>
+(function(){
+  var root = document.documentElement;
+
+  /* Tema claro/escuro (opcional; sem JavaScript a página segue o tema do sistema) */
+  var btn = document.getElementById('themeToggle');
+  function currentTheme(){
+    var t = root.getAttribute('data-theme');
+    if (t) return t;
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  function paintLabel(){
+    if (!btn) return;
+    var dark = currentTheme() === 'dark';
+    btn.textContent = dark ? '☀ Claro' : '☾ Escuro';
+    btn.setAttribute('aria-label', dark ? 'Mudar para o tema claro' : 'Mudar para o tema escuro');
+  }
+  if (btn){
+    btn.hidden = false;
+    paintLabel();
+    btn.addEventListener('click', function(){
+      var next = currentTheme() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('eqi-theme', next); } catch (e) {}
+      paintLabel();
+    });
+  }
+
+  /* Barra de progresso + destaque da seção atual no menu lateral */
+  var bar = document.getElementById('progress');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.sidenav a[href^="#"]'));
+  var byId = {};
+  var targets = [];
+  links.forEach(function(a){
+    var id = a.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (el){ byId[id] = a; targets.push(el); }
+  });
+  var goAula = document.querySelector('.go-aula');
+  var goKit = document.querySelector('.go-kit');
+  var kit = document.getElementById('kit');
+  var aula = document.getElementById('aula');
+  var ticking = false;
+
+  function update(){
+    ticking = false;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    var y = window.pageYOffset || doc.scrollTop || 0;
+    if (bar) bar.style.width = (max > 0 ? Math.min(100, (y / max) * 100) : 0) + '%';
+
+    var current = null;
+    for (var i = 0; i < targets.length; i++){
+      if (targets[i].getBoundingClientRect().top <= 120) current = targets[i]; else break;
+    }
+    links.forEach(function(a){ a.classList.remove('active'); a.removeAttribute('aria-current'); });
+    if (current && byId[current.id]){
+      byId[current.id].classList.add('active');
+      byId[current.id].setAttribute('aria-current', 'location');
+    }
+    if (goAula && goKit && kit && aula){
+      var inKit = kit.getBoundingClientRect().top <= 120;
+      var inAula = !inKit && aula.getBoundingClientRect().top <= 120;
+      goKit.classList.toggle('is-on', inKit);
+      goAula.classList.toggle('is-on', inAula);
+    }
+  }
+  /* Dica "deslize" apenas nas tabelas que realmente transbordam na tela atual */
+  var tws = Array.prototype.slice.call(document.querySelectorAll('.tw'));
+  function markScroll(){
+    tws.forEach(function(tw){
+      var over = tw.scrollWidth > tw.clientWidth + 1;
+      tw.classList.toggle('can-scroll', over);
+      if (over){ tw.setAttribute('tabindex', '0'); } else { tw.removeAttribute('tabindex'); }
+      var next = tw.nextElementSibling;
+      if (over && !(next && next.classList.contains('scroll-hint'))){
+        var hint = document.createElement('p');
+        hint.className = 'scroll-hint';
+        hint.setAttribute('aria-hidden', 'true');
+        hint.textContent = 'Deslize a tabela para o lado para ver todas as colunas →';
+        tw.parentNode.insertBefore(hint, tw.nextSibling);
+      }
+    });
+  }
+
+  window.addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; window.requestAnimationFrame(update); }
+  }, { passive: true });
+  window.addEventListener('resize', function(){ update(); markScroll(); });
+  update();
+  markScroll();
+  if (document.fonts && document.fonts.ready){ document.fonts.ready.then(markScroll); }
+
+  /* Ao imprimir ou salvar em PDF, abre os gabaritos e flashcards para nada se perder */
+  var opened = [];
+  window.addEventListener('beforeprint', function(){
+    opened = [];
+    Array.prototype.forEach.call(document.querySelectorAll('details:not([open])'), function(d){
+      d.setAttribute('open', ''); opened.push(d);
+    });
+  });
+  window.addEventListener('afterprint', function(){
+    opened.forEach(function(d){ d.removeAttribute('open'); });
+    opened = [];
+  });
+})();
+</script>
+</body>
+</html>
+
+
+
+
